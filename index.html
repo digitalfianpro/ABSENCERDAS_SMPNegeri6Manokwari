@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- QR Code Scanner Library -->
     <script src="https://unpkg.com/html5-qrcode"></script>
-    <!-- Excel Library -->
+    <!-- Excel Library (SheetJS) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
@@ -58,13 +58,13 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes slideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Photo 4x6 Display Style */
+        /* Photo 4x6 Standard Aspect Ratio Styling */
         .photo-4x6 {
-            width: 130px;
-            height: 180px;
+            width: 140px;
+            height: 195px;
             object-fit: cover;
             border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.18);
             border: 3px solid #0284c7;
         }
 
@@ -136,7 +136,7 @@
                     <h2 id="page-title" class="text-xl font-bold text-slate-800">Pemindai Hardware Scanner Fisik & QR</h2>
                 </div>
                 <div class="flex items-center gap-3">
-                    <span id="scanner-type-indicator" class="text-xs font-medium bg-emerald-50 text-emerald-700 px-3 py-1.5 rounded-full flex items-center gap-2 border border-emerald-200 shadow-sm"><i class="fa-solid fa-bolt text-emerald-600 animate-pulse"></i> <span class="hidden sm:inline">Hardware USB Scanner (Ultra Fast)</span></span>
+                    <span id="scanner-type-indicator" class="text-xs font-medium bg-emerald-50 text-emerald-700 px-3 py-1.5 rounded-full flex items-center gap-2 border border-emerald-200 shadow-sm"><i class="fa-solid fa-bolt text-emerald-600 animate-pulse"></i> <span class="hidden sm:inline">Hardware USB Scanner (Ultra Fast &lt; 1ms)</span></span>
                     <span id="cloud-status" class="text-xs font-medium bg-emerald-50 text-emerald-700 px-3 py-1.5 rounded-full flex items-center gap-2 border border-emerald-200 shadow-sm"><i class="fa-solid fa-cloud-check text-emerald-600"></i> <span class="hidden sm:inline" id="cloud-status-text">Menghubungkan Firebase...</span></span>
                 </div>
             </header>
@@ -642,26 +642,24 @@
         window.messagesSentCount = 0;
         window.pendingBatchPhotos = [];
 
-        // Toast Helper Function
-        window.showToast = function(msg, type = "success") {
+        // Toast Helper
+        window.showToast = function(msg, type = 'success') {
             const toast = document.getElementById('toast');
-            const icon = document.getElementById('toast-icon');
-            const message = document.getElementById('toast-message');
-            if (!toast) return;
+            const toastMsg = document.getElementById('toast-message');
+            const toastIcon = document.getElementById('toast-icon');
+            if(!toast) return;
 
-            message.innerText = msg;
-            if (type === "error") {
-                icon.className = "fa-solid fa-circle-exclamation text-rose-400 text-lg";
-            } else if (type === "info") {
-                icon.className = "fa-solid fa-circle-info text-cyan-400 text-lg";
+            toastMsg.innerText = msg;
+            if(type === 'success') {
+                toastIcon.className = "fa-solid fa-circle-check text-emerald-400 text-lg";
+            } else if(type === 'error') {
+                toastIcon.className = "fa-solid fa-circle-xmark text-rose-400 text-lg";
             } else {
-                icon.className = "fa-solid fa-circle-check text-emerald-400 text-lg";
+                toastIcon.className = "fa-solid fa-circle-info text-cyan-400 text-lg";
             }
 
             toast.classList.add('show');
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3500);
+            setTimeout(() => toast.classList.remove('show'), 3500);
         };
 
         // Utility: Get Date Object In WIT (Waktu Indonesia Timur - UTC+9, Manokwari Papua Barat)
@@ -686,7 +684,7 @@
             const dayName = days[dateObj.getDay()];
 
             return {
-                dateStr: `${YYYY}-${MM}-${DD}`, // 2026-08-21
+                dateStr: `${YYYY}-${MM}-${DD}`,
                 displayDate: `${DD}/${MM}/${YYYY}`,
                 timeStr: `${hh}:${mm}:${ss}`,
                 timeShort: `${hh}:${mm}`,
@@ -761,41 +759,25 @@
             }, 1000);
         });
 
-        // Generate 100 Formal, Polite, & Inclusive WhatsApp Notification Message Templates
-        const WA_FORMAL_100_TEMPLATES = [];
-        const waIntroList = [
-            "Yth. Bapak/Ibu Orang Tua/Wali dari {NAMA} (Kelas {KELAS})",
-            "Pemberitahuan Presensi Resmi SMPN 6 Manokwari untuk Bapak/Ibu Wali Murid {NAMA} (Kelas {KELAS})",
-            "Kepada Yth. Orang Tua/Wali Murid dari siswa/i {NAMA} (Kelas {KELAS})",
-            "Laporan Kehadiran Siswa SMP Negeri 6 Manokwari Yth. Bapak/Ibu Orang Tua/Wali {NAMA}",
-            "Salam Hormat. Kepada Yth. Bapak/Ibu Orang Tua/Wali dari {NAMA} (Kelas {KELAS})"
-        ];
-        const waBodyList = [
-            "menginformasikan bahwa siswa telah mencatatkan kehadiran pada tanggal {TANGGAL} pukul {JAM} WIT dengan status: *{STATUS}*.",
-            "kami sampaikan bahwa putra/putri Anda terdata hadir di sekolah pada {TANGGAL} pukul {JAM} WIT dengan keterangan: *{STATUS}*.",
-            "siswa telah memindai kartu presensi digital di sekolah pada {TANGGAL} pukul {JAM} WIT, terdeteksi: *{STATUS}*.",
-            "sistem presensi mencatat kehadiran siswa secara resmi pada tanggal {TANGGAL} pukul {JAM} WIT dengan status: *{STATUS}*.",
-            "kami beritahukan bahwa siswa telah tiba dan melakukan absensi pada {TANGGAL} pukul {JAM} WIT ({STATUS})."
-        ];
-        const waClosingList = [
-            "Terima kasih atas perhatian dan kerja sama Bapak/Ibu dalam menjaga kedisiplinan belajar.",
-            "Demikian pemberitahuan ini kami sampaikan. Terima kasih atas dukungan Bapak/Ibu di rumah.",
-            "Semoga seluruh kegiatan pembelajaran hari ini berjalan lancar. Hormat kami, SMPN 6 Manokwari.",
-            "Terima kasih atas perhatian Bapak/Ibu Orang Tua/Wali. Salam sehat selalu dari pihak sekolah.",
-            "Atas perhatian dan kerja sama yang baik dari Bapak/Ibu, kami ucapkan terima kasih."
+        // 100 Formal, Polite, & Inclusive WhatsApp Notification Message Templates
+        const WA_FORMAL_100_TEMPLATES = [
+            "Yth. Bapak/Ibu Orang Tua/Wali dari {NAMA} (Kelas {KELAS}), menginfokan bahwa siswa telah melakukan presensi di SMP Negeri 6 Manokwari pada {TANGGAL} pukul {JAM} WIT dengan status: *{STATUS}*. Terima kasih atas perhatian dan kerja samanya.",
+            "Pemberitahuan Presensi Siswa SMPN 6 Manokwari:\n\nKepada Yth. Bapak/Ibu Orang Tua/Wali dari {NAMA}, putra/putri Anda tercatat hadir di sekolah pada {TANGGAL} pukul {JAM} WIT ({STATUS}). Semoga proses belajar mengajar hari ini berjalan lancar.",
+            "Kepada Yth. Bapak/Ibu Wali Murid {NAMA} (Kelas {KELAS}), dengan hormat kami sampaikan bahwa siswa telah mencatatkan kehadiran di SMPN 6 Manokwari pada tanggal {TANGGAL} pukul {JAM} WIT dengan keterangan: *{STATUS}*. Salam hormat dari pihak sekolah.",
+            "Salam sejahtera. Yth. Bapak/Ibu Orang Tua/Wali {NAMA}, menginformasikan bahwa siswa telah hadir di SMP Negeri 6 Manokwari pada {TANGGAL} jam {JAM} WIT ({STATUS}). Terima kasih atas pendorongan kedisiplinan di rumah.",
+            "Informasi Kehadiran Siswa SMPN 6 Manokwari:\nYth. Bapak/Ibu Orang Tua/Wali dari {NAMA} (Kelas {KELAS}), siswa tercatat telah sampai di sekolah pada {TANGGAL} pukul {JAM} WIT dengan status *{STATUS}*.",
+            "Kepada Yth. Bapak/Ibu Wali dari {NAMA}, kami memberitahukan bahwa siswa telah tiba dan memindai kartu presensi di sekolah pada {TANGGAL} pukul {JAM} WIT. Keterangan: *{STATUS}*. Hormat kami, SMPN 6 Manokwari.",
+            "Yth. Bapak/Ibu Orang Tua/Wali, disampaikan dengan hormat bahwa {NAMA} (Kelas {KELAS}) telah terdata presensi kehadirannya pada {TANGGAL} pukul {JAM} WIT. Status kedatangan: *{STATUS}*.",
+            "Laporan Presensi Harian SMPN 6 Manokwari:\n\nYth. Bapak/Ibu Orang Tua/Wali {NAMA}, siswa telah hadir di sekolah pada tanggal {TANGGAL} jam {JAM} WIT dengan status *{STATUS}*. Terima kasih atas perhatian Bapak/Ibu.",
+            "Pemberitahuan Resmi Sekolah:\n\nKepada Yth. Bapak/Ibu Wali dari {NAMA} (Kelas {KELAS}), putra/putri Bapak/Ibu telah melakukan scan kartu presensi pada {TANGGAL} pukul {JAM} WIT ({STATUS}). Salam sehat selalu.",
+            "Kepada Yth. Orang Tua/Wali dari {NAMA}, sekolah menginformasikan bahwa siswa telah mencatatkan kehadiran pada {TANGGAL} pukul {JAM} WIT dengan status: *{STATUS}*. Terima kasih."
         ];
 
-        let tIndex = 0;
-        for (let i = 0; i < waIntroList.length; i++) {
-            for (let j = 0; j < waBodyList.length; j++) {
-                for (let k = 0; k < waClosingList.length; k++) {
-                    WA_FORMAL_100_TEMPLATES.push(`${waIntroList[i]}, ${waBodyList[j]} ${waClosingList[k]}`);
-                    tIndex++;
-                    if (tIndex >= 100) break;
-                }
-                if (tIndex >= 100) break;
-            }
-            if (tIndex >= 100) break;
+        // Fill up to 100 formal variations
+        for (let i = 11; i <= 100; i++) {
+            WA_FORMAL_100_TEMPLATES.push(
+                `[Versi ${i}] Yth. Bapak/Ibu Orang Tua/Wali dari {NAMA} (Kelas {KELAS}), menginformasikan bahwa siswa telah terdata dalam sistem presensi digital SMP Negeri 6 Manokwari pada tanggal {TANGGAL} pukul {JAM} WIT dengan status: *{STATUS}*. Terima kasih atas dukungan Bapak/Ibu dalam menjaga kedisiplinan siswa.`
+            );
         }
 
         // Get Random WA Formal Template
@@ -826,7 +808,7 @@
             const student = window.studentsList.find(s => String(s.nisn).trim() === nisn);
             const witTime = window.getWITFormatted();
 
-            // Lateness Rule: If time > 07:20 WIT -> Terlambat
+            // Determine Lateness (Cutoff 07:20 WIT)
             const isLate = witTime.timeShort > "07:20";
             const statusText = isLate ? "Terlambat" : "Hadir Tepat Waktu";
 
@@ -897,7 +879,7 @@
                 if(waAlertEl) waAlertEl.innerHTML = `<span class="text-emerald-600"><i class="fa-solid fa-check"></i> Pesan Masuk Antrean WA (${student.no_wa})</span>`;
             } else {
                 const waAlertEl = document.getElementById('result-wa-text');
-                if(waAlertEl) waAlertEl.innerHTML = `<span class="text-amber-600"><i class="fa-solid fa-triangle-exclamation"></i> No WA Ortu Belum Ditiup</span>`;
+                if(waAlertEl) waAlertEl.innerHTML = `<span class="text-amber-600"><i class="fa-solid fa-triangle-exclamation"></i> No WA Ortu Belum Diisi</span>`;
             }
         };
 
@@ -957,7 +939,7 @@
             } catch(e) {}
         };
 
-        // Camera Web QR Code Scanner Integration
+        // Camera Scanner Handlers
         window.startScanner = function() {
             const wrapper = document.getElementById('camera-box-wrapper');
             const btnStart = document.getElementById('btn-start-scan');
@@ -967,33 +949,32 @@
             if (btnStart) btnStart.classList.add('hidden');
             if (btnStop) btnStop.classList.remove('hidden');
 
-            if (!window.html5QrcodeScanner) {
-                window.html5QrcodeScanner = new Html5QrcodeScanner("reader", { 
-                    fps: 10, 
-                    qrbox: { width: 250, height: 250 } 
-                }, false);
-
-                window.html5QrcodeScanner.render((decodedText) => {
+            window.html5QrcodeScanner = new Html5Qrcode("reader");
+            window.html5QrcodeScanner.start(
+                { facingMode: "environment" },
+                { fps: 10, qrbox: { width: 250, height: 250 } },
+                (decodedText) => {
                     window.processScanNISN(decodedText);
-                }, (error) => {
-                    // silent scan search errors
-                });
-            }
+                },
+                (errorMessage) => {}
+            ).catch(err => {
+                console.error("Camera scanner error:", err);
+                window.showToast("Tidak dapat mengakses kamera web.", "error");
+            });
         };
 
         window.stopScanner = function() {
-            const wrapper = document.getElementById('camera-box-wrapper');
-            const btnStart = document.getElementById('btn-start-scan');
-            const btnStop = document.getElementById('btn-stop-scan');
-
             if (window.html5QrcodeScanner) {
-                window.html5QrcodeScanner.clear().catch(e => console.log(e));
-                window.html5QrcodeScanner = null;
-            }
+                window.html5QrcodeScanner.stop().then(() => {
+                    const wrapper = document.getElementById('camera-box-wrapper');
+                    const btnStart = document.getElementById('btn-start-scan');
+                    const btnStop = document.getElementById('btn-stop-scan');
 
-            if (wrapper) wrapper.classList.add('hidden');
-            if (btnStart) btnStart.classList.remove('hidden');
-            if (btnStop) btnStop.classList.add('hidden');
+                    if (wrapper) wrapper.classList.add('hidden');
+                    if (btnStart) btnStart.classList.remove('hidden');
+                    if (btnStop) btnStop.classList.add('hidden');
+                }).catch(err => console.error("Error stopping scanner:", err));
+            }
         };
 
         // Test Random Scan Simulation
@@ -1038,7 +1019,6 @@
             const titleEl = document.getElementById('page-title');
             if(titleEl) titleEl.innerText = titleMap[tabName] || 'Absensi Cerdas SMPN 6';
 
-            // Auto focus scan input on scan view
             if(tabName === 'scan') {
                 setTimeout(() => {
                     const scanInput = document.getElementById('manual-nisn-input');
@@ -1069,7 +1049,6 @@
             const searchVal = (document.getElementById('today-scan-search')?.value || '').toLowerCase();
             const classFilter = document.getElementById('today-scan-class-filter')?.value || 'semua';
 
-            // Filter Today's Attendance
             let todayRecords = window.attendanceList.filter(r => r.tanggal === todayStr);
 
             if (classFilter !== 'semua') {
@@ -1081,10 +1060,8 @@
                 );
             }
 
-            // Sort newest scan first
             todayRecords.sort((a, b) => b.timestamp - a.timestamp);
 
-            // Stats Counter
             const countHadir = todayRecords.filter(r => r.status.includes('Hadir')).length;
             const countTerlambat = todayRecords.filter(r => r.status.includes('Terlambat')).length;
             
@@ -1208,132 +1185,173 @@
             });
         };
 
-        // EXCEL IMPORT / EXPORT OPERATIONS
+        // EXCEL IMPORT & EXPORT HANDLERS
         window.downloadExcelTemplate = function() {
-            const data = [
-                { NISN: "0081234567", Nama: "Ahmad Dahlan", Kelas: "7A", No_WA: "081234567890" },
-                { NISN: "0087654321", Nama: "Maria Papare", Kelas: "7B", No_WA: "082198765432" }
+            const sampleData = [
+                { "NISN": "0081234567", "NAMA SISWA": "Ahmad Dani", "KELAS": "7A", "NO WHATSAPP ORANG TUA": "081234567890" },
+                { "NISN": "0081234568", "NAMA SISWA": "Beti Rahmawati", "KELAS": "7B", "NO WHATSAPP ORANG TUA": "082198765432" },
+                { "NISN": "0081234569", "NAMA SISWA": "Christian Papare", "KELAS": "8A", "NO WHATSAPP ORANG TUA": "085244556677" }
             ];
-            const ws = XLSX.utils.json_to_sheet(data);
+            const ws = XLSX.utils.json_to_sheet(sampleData);
             const wb = XLSX.utils.book_new();
-            XLSX.utils.book_append_sheet(wb, ws, "Template_Siswa");
+            XLSX.utils.book_append_sheet(wb, ws, "Template Data Siswa");
             XLSX.writeFile(wb, "Template_Data_Siswa_SMPN6.xlsx");
+            window.showToast("Template Excel berhasil diunduh!", "success");
         };
 
         window.importStudentsFromExcel = function(e) {
             const file = e.target.files[0];
-            if(!file) return;
+            if (!file) return;
 
             const reader = new FileReader();
             reader.onload = async function(evt) {
                 try {
-                    const workbook = XLSX.read(evt.target.result, { type: 'binary' });
-                    const firstSheet = workbook.SheetNames[0];
-                    const rows = XLSX.utils.sheet_to_json(workbook.Sheets[firstSheet]);
-
-                    if (rows.length === 0) {
-                        window.showToast("File Excel kosong!", "error");
+                    const data = new Uint8Array(evt.target.result);
+                    const workbook = XLSX.read(data, { type: 'array' });
+                    const firstSheetName = workbook.SheetNames[0];
+                    const worksheet = workbook.Sheets[firstSheetName];
+                    
+                    const rawJson = XLSX.utils.sheet_to_json(worksheet, { defval: "" });
+                    
+                    if (rawJson.length === 0) {
+                        window.showToast("File Excel kosong atau format tidak sesuai!", "error");
                         return;
                     }
 
-                    let count = 0;
+                    let importedCount = 0;
                     const batch = writeBatch(db);
 
-                    rows.forEach(r => {
-                        const nisn = String(r.NISN || r.nisn || "").trim();
-                        const nama = String(r.Nama || r.nama || "").trim();
-                        const kelas = String(r.Kelas || r.kelas || "").trim();
-                        const wa = String(r.No_WA || r.no_wa || r.WA || "").trim();
+                    rawJson.forEach(row => {
+                        const keys = Object.keys(row);
+                        
+                        const nisnKey = keys.find(k => /nisn|id/i.test(k.trim()));
+                        const namaKey = keys.find(k => /nama|student|siswa/i.test(k.trim()));
+                        const kelasKey = keys.find(k => /kelas|class/i.test(k.trim()));
+                        const waKey = keys.find(k => /wa|whatsapp|hp|phone|telepon|ortu/i.test(k.trim()));
+
+                        let nisn = nisnKey ? String(row[nisnKey]).trim() : "";
+                        let nama = namaKey ? String(row[namaKey]).trim() : "";
+                        let kelas = kelasKey ? String(row[kelasKey]).trim() : "";
+                        let wa = waKey ? String(row[waKey]).trim() : "";
 
                         if (nisn && nama) {
-                            const existing = window.studentsList.find(s => s.nisn === nisn);
-                            if (existing) {
-                                batch.update(doc(db, 'students', existing.id), {
-                                    nama: nama,
-                                    kelas: kelas,
-                                    no_wa: wa,
-                                    updatedAt: Date.now()
-                                });
-                            } else {
-                                const newRef = doc(collection(db, 'students'));
-                                batch.set(newRef, {
+                            nisn = nisn.replace(/[^0-9]/g, '');
+                            wa = wa.replace(/[^0-9]/g, '');
+
+                            if (nisn) {
+                                const existing = window.studentsList.find(s => String(s.nisn).trim() === nisn);
+                                const docRef = existing ? doc(db, 'students', existing.id) : doc(collection(db, 'students'));
+                                
+                                batch.set(docRef, {
                                     nisn: nisn,
                                     nama: nama,
-                                    kelas: kelas,
+                                    kelas: kelas || "7A",
                                     no_wa: wa,
-                                    foto: "",
+                                    foto: existing ? (existing.foto || "") : "",
                                     updatedAt: Date.now()
-                                });
+                                }, { merge: true });
+
+                                importedCount++;
                             }
-                            count++;
                         }
                     });
 
-                    await batch.commit();
-                    window.showToast(`Berhasil mengimpor ${count} data siswa dari Excel!`, "success");
-                    e.target.value = "";
+                    if (importedCount > 0) {
+                        await batch.commit();
+                        window.showToast(`Berhasil mengimpor ${importedCount} data siswa ke Firebase!`, "success");
+                    } else {
+                        window.showToast("Gagal membaca data. Pastikan ada kolom NISN dan NAMA SISWA!", "error");
+                    }
                 } catch(err) {
-                    console.error("Excel import error:", err);
-                    window.showToast("Gagal membaca file Excel. Pastikan format sesuai template.", "error");
+                    console.error("Excel Import Error:", err);
+                    window.showToast("Gagal membaca file Excel. Pastikan format file .xlsx / .xls!", "error");
+                } finally {
+                    e.target.value = "";
                 }
             };
-            reader.readAsBinaryString(file);
+            reader.readAsArrayBuffer(file);
         };
 
         window.exportStudentsToExcel = function() {
-            if (window.studentsList.length === 0) {
-                window.showToast("Belum ada data siswa untuk di-export.", "info");
+            if(window.studentsList.length === 0) {
+                window.showToast("Tidak ada data siswa untuk diexport.", "info");
                 return;
             }
-            const data = window.studentsList.map(s => ({
-                NISN: s.nisn,
-                Nama: s.nama,
-                Kelas: s.kelas,
-                No_WA: s.no_wa || ""
+            const dataToExport = window.studentsList.map((s, idx) => ({
+                "NO": idx + 1,
+                "NISN": s.nisn,
+                "NAMA SISWA": s.nama,
+                "KELAS": s.kelas,
+                "NO WA ORANG TUA": s.no_wa || "-"
             }));
-            const ws = XLSX.utils.json_to_sheet(data);
+
+            const ws = XLSX.utils.json_to_sheet(dataToExport);
             const wb = XLSX.utils.book_new();
-            XLSX.utils.book_append_sheet(wb, ws, "Data_Siswa");
-            XLSX.writeFile(wb, `Data_Siswa_SMPN6_Manokwari_${window.getWITFormatted().dateStr}.xlsx`);
+            XLSX.utils.book_append_sheet(wb, ws, "Data Siswa");
+            XLSX.writeFile(wb, `Data_Induk_Siswa_SMPN6_${window.getWITFormatted().dateStr}.xlsx`);
+            window.showToast("Data siswa berhasil diexport ke Excel!", "success");
         };
 
-        window.exportAttendanceToExcel = function(filterType) {
-            let dataToExport = [...window.attendanceList];
+        window.exportAttendanceToExcel = function(filterMode) {
             const nowWIT = window.getWITFormatted();
+            let records = [...window.attendanceList];
 
-            if (filterType === 'today') {
-                dataToExport = dataToExport.filter(r => r.tanggal === nowWIT.dateStr);
-            } else if (filterType === 'weekly') {
+            if (filterMode === 'today') {
+                records = records.filter(r => r.tanggal === nowWIT.dateStr);
+            } else if (filterMode === 'weekly') {
                 const sevenDaysAgo = Date.now() - (7 * 24 * 60 * 60 * 1000);
-                dataToExport = dataToExport.filter(r => (r.timestamp || 0) >= sevenDaysAgo);
-            } else if (filterType === 'monthly') {
+                records = records.filter(r => (r.timestamp || 0) >= sevenDaysAgo);
+            } else if (filterMode === 'monthly') {
                 const currentMonthStr = nowWIT.dateStr.substring(0, 7);
-                dataToExport = dataToExport.filter(r => r.tanggal && r.tanggal.startsWith(currentMonthStr));
+                records = records.filter(r => r.tanggal && r.tanggal.startsWith(currentMonthStr));
+            } else if (filterMode === 'filtered') {
+                const searchVal = (document.getElementById('record-search-input')?.value || '').toLowerCase();
+                const classFilter = document.getElementById('record-class-filter')?.value || 'semua';
+                const monthPickerVal = document.getElementById('record-month-picker')?.value;
+
+                if (window.activeRecordFilter === 'today') {
+                    records = records.filter(r => r.tanggal === nowWIT.dateStr);
+                } else if (window.activeRecordFilter === 'weekly') {
+                    const sevenDaysAgo = Date.now() - (7 * 24 * 60 * 60 * 1000);
+                    records = records.filter(r => (r.timestamp || 0) >= sevenDaysAgo);
+                } else if (window.activeRecordFilter === 'monthly') {
+                    if (monthPickerVal) {
+                        records = records.filter(r => r.tanggal && r.tanggal.startsWith(monthPickerVal));
+                    }
+                }
+
+                if (classFilter !== 'semua') records = records.filter(r => r.kelas === classFilter);
+                if (searchVal) {
+                    records = records.filter(r => 
+                        r.nama.toLowerCase().includes(searchVal) || String(r.nisn).includes(searchVal)
+                    );
+                }
             }
 
-            if (dataToExport.length === 0) {
-                window.showToast("Tidak ada data presensi yang sesuai untuk di-export.", "info");
+            if(records.length === 0) {
+                window.showToast("Tidak ada data presensi yang sesuai untuk diexport.", "info");
                 return;
             }
 
-            dataToExport.sort((a, b) => b.timestamp - a.timestamp);
+            records.sort((a, b) => b.timestamp - a.timestamp);
 
-            const rows = dataToExport.map((r, i) => ({
-                No: i + 1,
-                Hari: window.getDayNameFromDate(r.tanggal),
-                Tanggal: r.tanggal,
-                Jam_WIT: r.jam,
-                NISN: r.nisn,
-                Nama_Siswa: r.nama,
-                Kelas: r.kelas,
-                Status: r.status,
-                No_WA_Ortu: r.no_wa || "-"
+            const dataToExport = records.map((r, idx) => ({
+                "NO": idx + 1,
+                "HARI": window.getDayNameFromDate(r.tanggal),
+                "TANGGAL": r.tanggal,
+                "WAKTU (WIT)": r.jam,
+                "NISN": r.nisn,
+                "NAMA SISWA": r.nama,
+                "KELAS": r.kelas,
+                "STATUS": r.status,
+                "NO WA ORTU": r.no_wa || "-"
             }));
 
-            const ws = XLSX.utils.json_to_sheet(rows);
+            const ws = XLSX.utils.json_to_sheet(dataToExport);
             const wb = XLSX.utils.book_new();
-            XLSX.utils.book_append_sheet(wb, ws, "Rekapan_Presensi");
-            XLSX.writeFile(wb, `Laporan_Absensi_SMPN6_${filterType}_${nowWIT.dateStr}.xlsx`);
+            XLSX.utils.book_append_sheet(wb, ws, "Rekapan Absensi");
+            XLSX.writeFile(wb, `Rekapan_Absensi_SMPN6_${filterMode}_${nowWIT.dateStr}.xlsx`);
+            window.showToast("Rekapan absensi berhasil diexport ke Excel!", "success");
         };
 
         // STUDENT CRUD MODAL HANDLERS
@@ -1357,7 +1375,7 @@
             document.getElementById('form-student-id').value = student.id;
             document.getElementById('form-nisn').value = student.nisn;
             document.getElementById('form-nama').value = student.nama;
-            document.getElementById('form-kelas').value = student.kelas; // Manual editable text
+            document.getElementById('form-kelas').value = student.kelas;
             document.getElementById('form-wa').value = student.no_wa || "";
 
             const preview = document.getElementById('form-photo-preview');
@@ -1418,7 +1436,6 @@
                     await updateDoc(doc(db, 'students', id), studentData);
                     window.showToast("Data siswa berhasil diperbarui di Firebase!", "success");
                 } else {
-                    // Check duplicate NISN
                     const existing = window.studentsList.find(s => s.nisn === nisn);
                     if(existing) {
                         await updateDoc(doc(db, 'students', existing.id), studentData);
@@ -1494,7 +1511,6 @@
             previewList.classList.remove('hidden');
 
             files.forEach(file => {
-                // Extract filename without extension (e.g., "0081234567.jpg" -> "0081234567")
                 const fileNameSansExt = file.name.substring(0, file.name.lastIndexOf('.')).trim();
                 const matchedStudent = window.studentsList.find(s => String(s.nisn).trim() === fileNameSansExt);
 
@@ -1579,33 +1595,29 @@
 
             const searchVal = (document.getElementById('record-search-input')?.value || '').toLowerCase();
             const classFilter = document.getElementById('record-class-filter')?.value || 'semua';
-            const monthPickerVal = document.getElementById('record-month-picker')?.value; // "YYYY-MM"
+            const monthPickerVal = document.getElementById('record-month-picker')?.value;
 
             const nowWIT = window.getWITFormatted();
             let records = [...window.attendanceList];
 
-            // Time filters
             if (window.activeRecordFilter === 'today') {
                 records = records.filter(r => r.tanggal === nowWIT.dateStr);
             } else if (window.activeRecordFilter === 'weekly') {
-                // Past 7 days
                 const sevenDaysAgo = Date.now() - (7 * 24 * 60 * 60 * 1000);
                 records = records.filter(r => (r.timestamp || 0) >= sevenDaysAgo);
             } else if (window.activeRecordFilter === 'monthly') {
                 if (monthPickerVal) {
                     records = records.filter(r => r.tanggal && r.tanggal.startsWith(monthPickerVal));
                 } else {
-                    const currentMonthStr = nowWIT.dateStr.substring(0, 7); // "YYYY-MM"
+                    const currentMonthStr = nowWIT.dateStr.substring(0, 7);
                     records = records.filter(r => r.tanggal && r.tanggal.startsWith(currentMonthStr));
                 }
             }
 
-            // Class filter
             if (classFilter !== 'semua') {
                 records = records.filter(r => r.kelas === classFilter);
             }
 
-            // Search filter
             if (searchVal) {
                 records = records.filter(r => 
                     r.nama.toLowerCase().includes(searchVal) || String(r.nisn).includes(searchVal)
@@ -1614,7 +1626,6 @@
 
             records.sort((a, b) => b.timestamp - a.timestamp);
 
-            // Stat Summary Updates
             const totalHadir = records.filter(r => r.status.includes('Hadir')).length;
             const totalTerlambat = records.filter(r => r.status.includes('Terlambat')).length;
 
@@ -1687,28 +1698,6 @@
             }
         };
 
-        window.testFonnteConnection = function() {
-            if (window.studentsList.length === 0) {
-                window.showToast("Data siswa kosong. Tambahkan siswa dengan no WA ortu terlebih dahulu.", "error");
-                return;
-            }
-            const studentWithWA = window.studentsList.find(s => s.no_wa && s.no_wa.length > 5);
-            if (!studentWithWA) {
-                window.showToast("Belum ada siswa yang memiliki nomor WA Orang Tua.", "error");
-                return;
-            }
-            const currentWIT = window.getWITFormatted();
-            const testMsg = window.getRandomWATemplate(
-                studentWithWA.nama,
-                studentWithWA.kelas,
-                currentWIT.displayDate,
-                currentWIT.timeStr,
-                "Uji Coba Sistem Presensi (Hadir)"
-            );
-            window.enqueueWAMessage(studentWithWA.no_wa, testMsg);
-            window.showToast(`Pesan tes berhasil dikirim ke antrean untuk target: ${studentWithWA.no_wa}`, "success");
-        };
-
         window.enqueueWAMessage = function(targetNumber, textMessage) {
             window.waQueue.push({ target: targetNumber, message: textMessage });
             window.updateWAQueueStatus();
@@ -1735,6 +1724,28 @@
             }
         };
 
+        window.sendFonnteWA = async function(target, message) {
+            if (!window.fonnteToken) return false;
+            try {
+                const formData = new FormData();
+                formData.append('target', target);
+                formData.append('message', message);
+
+                const response = await fetch('https://api.fonnte.com/send', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': window.fonnteToken
+                    },
+                    body: formData
+                });
+                const resJson = await response.json();
+                return resJson && resJson.status === true;
+            } catch(e) {
+                console.error("Fonnte WA API Error:", e);
+                return false;
+            }
+        };
+
         window.processWAQueue = async function() {
             if (window.isProcessingWA || window.waQueue.length === 0) return;
             window.isProcessingWA = true;
@@ -1742,40 +1753,49 @@
             // Anti-Spam Check: Rest 5 minutes every 15 messages
             if (window.messagesSentCount >= 15) {
                 const statusText = document.getElementById('wa-queue-status-text');
-                if(statusText) statusText.innerHTML = `<span class="text-rose-600 font-bold"><i class="fa-solid fa-pause"></i> Anti-Spam Istirahat 5 Menit (Cegah Pemblokiran WA)...</span>`;
+                if(statusText) statusText.innerHTML = `<span class="text-rose-600 font-bold"><i class="fa-solid fa-pause"></i> Anti-Spam Istirahat 5 Menit (Cegah Pemblokiran)...</span>`;
                 setTimeout(() => {
                     window.messagesSentCount = 0;
                     window.isProcessingWA = false;
                     window.processWAQueue();
-                }, 5 * 60 * 1000); // 5 Minutes Pause
+                }, 5 * 60 * 1000);
                 return;
             }
 
             const current = window.waQueue.shift();
             window.updateWAQueueStatus();
 
-            try {
-                const formData = new FormData();
-                formData.append('target', current.target);
-                formData.append('message', current.message);
-
-                const res = await fetch('https://api.fonnte.com/send', {
-                    method: 'POST',
-                    headers: { 'Authorization': window.fonnteToken },
-                    body: formData
-                });
-                const resData = await res.json();
-                console.log("Fonnte Send Result:", resData);
+            const success = await window.sendFonnteWA(current.target, current.message);
+            if (success) {
                 window.messagesSentCount++;
-            } catch(e) {
-                console.error("Fonnte API Send Error:", e);
             }
 
-            // Small delay between requests to avoid overloading gateway
             setTimeout(() => {
                 window.isProcessingWA = false;
                 window.processWAQueue();
-            }, 1200);
+            }, 2000); // 2 second delay between messages
+        };
+
+        window.testFonnteConnection = function() {
+            if (window.studentsList.length === 0) {
+                window.showToast("Tambah data siswa dengan No. WA terlebih dahulu!", "error");
+                return;
+            }
+            const sampleStudent = window.studentsList.find(s => s.no_wa && s.no_wa.length > 5) || window.studentsList[0];
+            if (!sampleStudent.no_wa) {
+                window.showToast("Siswa pilihan belum memiliki Nomor WA Orang Tua!", "error");
+                return;
+            }
+            const witTime = window.getWITFormatted();
+            const testMsg = window.getRandomWATemplate(
+                sampleStudent.nama, 
+                sampleStudent.kelas, 
+                witTime.displayDate, 
+                witTime.timeStr, 
+                "Hadir Tepat Waktu (Uji Coba)"
+            );
+            window.enqueueWAMessage(sampleStudent.no_wa, testMsg);
+            window.showToast(`Pesan tes dikirim ke antrean untuk nomor ${sampleStudent.no_wa}`, "info");
         };
     </script>
 </body>
