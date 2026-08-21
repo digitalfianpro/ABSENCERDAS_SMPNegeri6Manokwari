@@ -1,0 +1,1 @@
+# ABSENCERDAS_SMPNegeri6Manokwari
