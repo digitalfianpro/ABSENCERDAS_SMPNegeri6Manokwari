@@ -13,7 +13,7 @@
     <!-- Excel Library (SheetJS) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
         * { box-sizing: border-box; }
@@ -46,9 +46,7 @@
             box-shadow: 0 0 22px rgba(34, 211, 238, 0.8);
             transform: translateY(-1px);
         }
-        .btn-glow-toska:active {
-            transform: translateY(0);
-        }
+        .btn-glow-toska:active { transform: translateY(0); }
 
         .btn-glow-outline {
             background: rgba(255, 255, 255, 0.9);
@@ -73,10 +71,7 @@
         }
         .sidebar-active i { filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.9)); }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(12px);
-        }
+        .glass-card { background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(12px); }
 
         #reader { width: 100%; border-radius: 1rem; overflow: hidden; border: none !important; background: #0f172a; }
         #reader button { background: linear-gradient(135deg, #0891b2, #06b6d4); color: white; padding: 0.6rem 1.2rem; border-radius: 0.5rem; border: none; cursor: pointer; font-weight: 500; margin-top: 1rem; transition: all 0.2s; box-shadow: 0 0 15px rgba(6, 182, 212, 0.4); }
@@ -122,27 +117,27 @@
         <div class="glass-card bg-white/95 box-glow-toska p-8 md:p-10 rounded-3xl text-center max-w-md w-full relative z-10 animate-slide-up shadow-2xl">
             <!-- LOGO DI BUAT LEBIH BESAR -->
             <img src="https://i.ibb.co.com/JWy6dhzM/LOGO-SMP6-1-removebg-preview.png" alt="Logo SMP 6" 
-                 class="w-36 md:w-44 h-auto object-contain mx-auto mb-5 filter drop-shadow-[0_10px_15px_rgba(6,182,212,0.4)] transition-transform hover:scale-105 duration-300" 
+                 class="w-44 md:w-52 h-auto object-contain mx-auto mb-5 filter drop-shadow-[0_10px_20px_rgba(6,182,212,0.5)] transition-transform hover:scale-105 duration-300" 
                  onerror="this.src='https://placehold.co/300x300/0891b2/ffffff?text=SMP+6'">
             
-            <h1 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight mb-1">Aplikasi Absensi Cerdas</h1>
-            <p class="text-xs font-bold text-cyan-600 tracking-wider mb-6">SMP NEGERI 6 MANOKWARI (WIT)</p>
+            <h1 class="text-2xl md:text-3xl font-black text-slate-900 tracking-tight mb-1">Aplikasi Absensi Cerdas</h1>
+            <p class="text-xs font-extrabold text-cyan-600 tracking-wider mb-6">SMP NEGERI 6 MANOKWARI (WIT)</p>
 
             <div class="bg-cyan-50/90 box-glow-toska rounded-2xl p-4 mb-6 text-left space-y-2">
-                <div class="flex items-center gap-2 text-xs font-bold text-cyan-950">
-                    <i class="fa-solid fa-shield-halved text-cyan-600 text-sm animate-pulse"></i> Otentikasi Akses Proktor Gmail
+                <div class="flex items-center gap-2 text-xs font-extrabold text-cyan-950">
+                    <i class="fa-solid fa-shield-halved text-cyan-600 text-sm animate-pulse"></i> Akses Resmi Proktor Gmail
                 </div>
-                <p class="text-[11px] text-slate-600 leading-relaxed">
-                    Aplikasi dilindungi akses resmi. Anda wajib masuk menggunakan Akun Gmail Proktor untuk sinkronisasi data real-time.
+                <p class="text-[11px] text-slate-600 leading-relaxed font-medium">
+                    Aplikasi ini dilindungi akses khusus. Wajib masuk menggunakan akun Google Proktor untuk otentikasi data aman.
                 </p>
-                <div class="bg-white px-3.5 py-2.5 rounded-xl border border-cyan-300 text-xs font-mono font-bold text-cyan-700 flex items-center justify-between shadow-sm">
-                    <span><i class="fa-regular fa-envelope mr-1.5 text-cyan-500"></i>proktorsmp6@gmail.com</span>
+                <div class="bg-white px-3.5 py-2.5 rounded-xl border border-cyan-300 text-xs font-mono font-bold text-cyan-800 flex items-center justify-between shadow-sm">
+                    <span><i class="fa-regular fa-envelope mr-1.5 text-cyan-600"></i>proktorsmp6@gmail.com</span>
                     <i class="fa-solid fa-circle-check text-emerald-500 text-sm"></i>
                 </div>
             </div>
 
-            <!-- LOGIN VIA GOOGLE BUTTON ONLY (Mode Offline & Masuk Cepat Dihapus) -->
-            <button id="btn-login-google" onclick="loginWithGoogle()" class="w-full py-4 px-5 btn-glow-toska rounded-2xl font-bold text-sm flex items-center justify-center gap-3">
+            <!-- LOGIN VIA GOOGLE BUTTON ONLY -->
+            <button id="btn-login-google" onclick="loginWithGoogle()" class="w-full py-4 px-5 btn-glow-toska rounded-2xl font-black text-sm flex items-center justify-center gap-3">
                 <svg class="w-5 h-5 shrink-0 bg-white rounded-full p-0.5" viewBox="0 0 24 24">
                     <path fill="#EA4335" d="M12 5c1.6 0 3 .6 4.1 1.6l3.1-3.1C17.3 1.8 14.8 1 12 1 7.5 1 3.7 3.6 1.9 7.3l3.7 2.9C6.5 7.3 9 5 12 5z"/>
                     <path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.5h6.5c-.3 1.5-1.1 2.8-2.4 3.7l3.7 2.9c2.2-2 3.7-5 3.7-8.8z"/>
@@ -152,8 +147,8 @@
                 <span>Masuk Akun Proktor Gmail</span>
             </button>
 
-            <p class="text-[10px] text-slate-400 mt-5 flex items-center justify-center gap-1">
-                <i class="fa-solid fa-lock text-cyan-500"></i> Terkunci Aman • Standard Sistem WIT Manokwari
+            <p class="text-[10px] text-slate-400 mt-5 flex items-center justify-center gap-1 font-semibold">
+                <i class="fa-solid fa-lock text-cyan-500"></i> Terkunci Sesi Permanen • WIT Papua Barat
             </p>
         </div>
     </div>
@@ -166,8 +161,8 @@
                 <div class="flex items-center gap-3">
                     <img src="https://i.ibb.co.com/JWy6dhzM/LOGO-SMP6-1-removebg-preview.png" alt="Logo" class="w-10 h-10 object-contain drop-shadow-[0_0_8px_rgba(6,182,212,0.6)]" onerror="this.src='https://placehold.co/100x100/0891b2/ffffff?text=SMP+6'">
                     <div>
-                        <h1 class="text-base font-bold text-white tracking-wide">Absensi<span class="text-cyan-400">SMPN6</span></h1>
-                        <p class="text-[10px] text-cyan-300/80 font-semibold tracking-wider">MANOKWARI (WIT)</p>
+                        <h1 class="text-base font-extrabold text-white tracking-wide">Absensi<span class="text-cyan-400">SMPN6</span></h1>
+                        <p class="text-[10px] text-cyan-300/80 font-extrabold tracking-wider">MANOKWARI (WIT)</p>
                     </div>
                 </div>
                 <button onclick="toggleSidebar()" class="lg:hidden ml-auto text-slate-400 hover:text-white p-1"><i class="fa-solid fa-times text-xl"></i></button>
@@ -188,23 +183,22 @@
             </div>
 
             <nav class="flex-1 py-4 px-4 space-y-2 overflow-y-auto">
-                <div class="text-[10px] font-bold text-cyan-400 uppercase tracking-wider mb-2 px-3 flex items-center gap-1.5">
+                <div class="text-[10px] font-extrabold text-cyan-400 uppercase tracking-wider mb-2 px-3 flex items-center gap-1.5">
                     <i class="fa-solid fa-compass text-xs"></i> Menu Utama
                 </div>
-                <a href="#" id="tab-scan" onclick="switchTab('scan'); return false;" class="sidebar-item sidebar-active flex items-center gap-3.5 px-4 py-3 rounded-xl font-medium"><i class="fa-solid fa-barcode w-5 text-center text-lg"></i><span>Scan QR / Barcode</span></a>
-                <a href="#" id="tab-live" onclick="switchTab('live'); return false;" class="sidebar-item flex items-center gap-3.5 px-4 py-3 rounded-xl font-medium text-slate-400"><i class="fa-solid fa-satellite-dish w-5 text-center text-lg"></i><div class="flex justify-between items-center w-full"><span>Live Absensi</span><span class="flex h-2.5 w-2.5 relative"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-500"></span></span></div></a>
-                <a href="#" id="tab-students" onclick="switchTab('students'); return false;" class="sidebar-item flex items-center gap-3.5 px-4 py-3 rounded-xl font-medium text-slate-400"><i class="fa-solid fa-user-graduate w-5 text-center text-lg"></i><span>Data Induk Siswa</span></a>
-                <a href="#" id="tab-records" onclick="switchTab('records'); return false;" class="sidebar-item flex items-center gap-3.5 px-4 py-3 rounded-xl font-medium text-slate-400"><i class="fa-solid fa-clipboard-list w-5 text-center text-lg"></i><span>Rekapan Absen</span></a>
-                <a href="#" id="tab-whatsapp" onclick="switchTab('whatsapp'); return false;" class="sidebar-item flex items-center gap-3.5 px-4 py-3 rounded-xl font-medium text-slate-400"><i class="fa-brands fa-whatsapp w-5 text-center text-lg text-emerald-400"></i><div class="flex justify-between items-center w-full"><span>WA Center</span><span id="wa-queue-badge" class="text-[10px] font-bold bg-amber-500 text-white px-2 py-0.5 rounded-full shadow-sm">0</span></div></a>
+                <a href="#" id="tab-scan" onclick="switchTab('scan'); return false;" class="sidebar-item sidebar-active flex items-center gap-3.5 px-4 py-3 rounded-xl font-bold"><i class="fa-solid fa-barcode w-5 text-center text-lg"></i><span>Scan QR / Barcode</span></a>
+                <a href="#" id="tab-live" onclick="switchTab('live'); return false;" class="sidebar-item flex items-center gap-3.5 px-4 py-3 rounded-xl font-bold text-slate-400"><i class="fa-solid fa-satellite-dish w-5 text-center text-lg"></i><div class="flex justify-between items-center w-full"><span>Live Absensi</span><span class="flex h-2.5 w-2.5 relative"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-500"></span></span></div></a>
+                <a href="#" id="tab-students" onclick="switchTab('students'); return false;" class="sidebar-item flex items-center gap-3.5 px-4 py-3 rounded-xl font-bold text-slate-400"><i class="fa-solid fa-user-graduate w-5 text-center text-lg"></i><span>Data Induk Siswa</span></a>
+                <a href="#" id="tab-records" onclick="switchTab('records'); return false;" class="sidebar-item flex items-center gap-3.5 px-4 py-3 rounded-xl font-bold text-slate-400"><i class="fa-solid fa-clipboard-list w-5 text-center text-lg"></i><span>Rekapan Absen</span></a>
+                <a href="#" id="tab-whatsapp" onclick="switchTab('whatsapp'); return false;" class="sidebar-item flex items-center gap-3.5 px-4 py-3 rounded-xl font-bold text-slate-400"><i class="fa-brands fa-whatsapp w-5 text-center text-lg text-emerald-400"></i><div class="flex justify-between items-center w-full"><span>WA Gateway</span><span id="wa-queue-badge" class="text-[10px] font-black bg-amber-500 text-white px-2 py-0.5 rounded-full shadow-sm">0</span></div></a>
             </nav>
 
             <!-- LIVE CONNECTION STATUS INDICATOR -->
             <div class="p-4 border-t border-slate-800">
                 <div class="flex items-center gap-3 bg-slate-900/90 p-3 rounded-xl border border-slate-800 box-glow-toska">
-                    <!-- Dynamic Dot Indicator: Green if connected, Red if offline -->
                     <div id="net-status-dot" class="w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(34,197,94,0.8)] animate-pulse shrink-0"></div>
                     <div class="text-xs min-w-0">
-                        <p id="net-status-text" class="text-white font-bold truncate">Terhubung (Online)</p>
+                        <p id="net-status-text" class="text-white font-extrabold truncate">Terhubung (Online)</p>
                         <p class="text-[10px] text-cyan-300 font-mono truncate" id="current-datetime">--/--/---- --:--:-- WIT</p>
                     </div>
                 </div>
@@ -216,10 +210,10 @@
             <header class="h-20 bg-white/95 backdrop-blur-md border-b border-slate-200 flex items-center justify-between px-6 lg:px-10 z-30 sticky top-0 shadow-sm">
                 <div class="flex items-center gap-4">
                     <button onclick="toggleSidebar()" class="lg:hidden text-slate-600 hover:text-cyan-600 transition-colors p-2 rounded-lg hover:bg-slate-100"><i class="fa-solid fa-bars text-xl"></i></button>
-                    <h2 id="page-title" class="text-lg md:text-xl font-extrabold text-slate-900 tracking-tight">Pemindai Hardware Scanner Fisik & QR</h2>
+                    <h2 id="page-title" class="text-lg md:text-xl font-black text-slate-900 tracking-tight">Pemindai Hardware Scanner Fisik & QR</h2>
                 </div>
                 <div class="flex items-center gap-3">
-                    <span id="scanner-type-indicator" class="text-xs font-bold bg-cyan-50 text-cyan-800 px-3 py-1.5 rounded-full flex items-center gap-2 box-glow-toska">
+                    <span id="scanner-type-indicator" class="text-xs font-extrabold bg-cyan-50 text-cyan-800 px-3.5 py-1.5 rounded-full flex items-center gap-2 box-glow-toska">
                         <i class="fa-solid fa-bolt text-cyan-600 animate-pulse"></i> 
                         <span class="hidden sm:inline">Hardware USB Scanner (&lt; 1ms)</span>
                     </span>
@@ -240,23 +234,23 @@
                                         <span class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.9)] animate-ping"></span>
                                         <h3 class="font-bold text-slate-900 text-base">Pemindai Scanner Fisik USB</h3>
                                     </div>
-                                    <span class="text-[11px] font-bold bg-amber-50 text-amber-800 px-2.5 py-1 rounded-full border border-amber-300"><i class="fa-solid fa-clock mr-1"></i>Batas 07:20 WIT</span>
+                                    <span class="text-[11px] font-black bg-amber-50 text-amber-800 px-2.5 py-1 rounded-full border border-amber-300"><i class="fa-solid fa-clock mr-1"></i>Batas 07:20 WIT</span>
                                 </div>
-                                <p class="text-xs text-slate-600 mb-4 leading-relaxed">
+                                <p class="text-xs text-slate-600 mb-4 leading-relaxed font-medium">
                                     Tembakkan <strong>Scanner USB Fisik</strong> ke kartu siswa. Respon instan tanpa batasan jumlah data ratusan siswa. Absen di atas <strong>07:20 WIT</strong> otomatis terdeteksi <strong>Terlambat</strong>.
                                 </p>
 
                                 <!-- Hardware Scanner Input Box -->
                                 <div class="bg-slate-950 rounded-2xl p-4 box-glow-toska text-white mb-4">
-                                    <label class="block text-[11px] font-bold text-cyan-300 uppercase tracking-wider mb-2 flex items-center justify-between">
+                                    <label class="block text-[11px] font-extrabold text-cyan-300 uppercase tracking-wider mb-2 flex items-center justify-between">
                                         <span><i class="fa-solid fa-keyboard mr-1.5"></i> Input Scanner Barcode USB:</span>
-                                        <span id="hardware-focus-status" class="text-emerald-400 text-[10px] flex items-center gap-1 font-mono"><i class="fa-solid fa-circle text-[8px] animate-pulse"></i>Siap Terima Scan</span>
+                                        <span id="hardware-focus-status" class="text-emerald-400 text-[10px] flex items-center gap-1 font-mono font-bold"><i class="fa-solid fa-circle text-[8px] animate-pulse"></i>Siap Terima Scan</span>
                                     </label>
                                     <div class="flex gap-2">
                                         <input type="text" id="manual-nisn-input" autocomplete="off" placeholder="Tembak scanner / ketik NISN..." 
-                                               class="w-full px-4 py-3 bg-slate-900 text-cyan-300 border border-slate-700 rounded-xl focus:ring-2 focus:ring-cyan-400 focus:outline-none font-mono text-base tracking-wider placeholder-slate-500" 
+                                               class="w-full px-4 py-3 bg-slate-900 text-cyan-300 border border-slate-700 rounded-xl focus:ring-2 focus:ring-cyan-400 focus:outline-none font-mono text-base tracking-wider placeholder-slate-500 font-bold" 
                                                onkeydown="if(event.key==='Enter'){ processScanNISN(this.value); this.value=''; }">
-                                        <button onclick="const el=document.getElementById('manual-nisn-input'); processScanNISN(el.value); el.value='';" class="px-5 py-3 btn-glow-toska font-bold text-xs rounded-xl flex items-center gap-1.5 shrink-0">
+                                        <button onclick="const el=document.getElementById('manual-nisn-input'); processScanNISN(el.value); el.value='';" class="px-5 py-3 btn-glow-toska font-black text-xs rounded-xl flex items-center gap-1.5 shrink-0">
                                             <i class="fa-solid fa-bolt"></i> Scan
                                         </button>
                                     </div>
@@ -276,8 +270,8 @@
                                         <i class="fa-solid fa-camera-rotate"></i> Matikan Kamera
                                     </button>
                                     <!-- REFRESH PEMINDAI BUTTON (TANPA LOGIN ULANG) -->
-                                    <button onclick="refreshScanPage()" class="px-4 py-3 btn-glow-toska rounded-xl font-bold text-xs flex items-center gap-1.5" title="Refresh Pemindai tanpa logout">
-                                        <i class="fa-solid fa-arrows-rotate animate-spin-hover"></i> Refresh Pemindai
+                                    <button onclick="refreshScanPage()" class="px-4 py-3 btn-glow-toska rounded-xl font-black text-xs flex items-center gap-1.5" title="Refresh Pemindai tanpa logout">
+                                        <i class="fa-solid fa-arrows-rotate"></i> Refresh Pemindai
                                     </button>
                                     <button onclick="simulateRandomScan()" class="px-3.5 py-3 btn-glow-outline rounded-xl font-bold text-xs" title="Uji Coba Absen Acak">
                                         <i class="fa-solid fa-vial text-cyan-600"></i> Tes
@@ -290,7 +284,7 @@
                         <div class="lg:col-span-7 bg-white box-glow-toska rounded-3xl p-6 shadow-sm flex flex-col justify-between relative overflow-hidden" id="scan-feedback-container">
                             <div>
                                 <div class="flex justify-between items-center mb-4 pb-3 border-b border-slate-100">
-                                    <span class="text-xs font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1.5">
+                                    <span class="text-xs font-extrabold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
                                         <i class="fa-solid fa-id-card text-cyan-600 text-sm"></i> Hasil Scan Terakhir Siswa
                                     </span>
                                     <span id="scan-timestamp-badge" class="text-xs font-mono bg-cyan-50 text-cyan-900 border border-cyan-200 px-3 py-1 rounded-lg font-bold">--:--:-- WIT</span>
@@ -300,7 +294,7 @@
                                     <div class="w-20 h-20 bg-cyan-50 rounded-2xl flex items-center justify-center mx-auto mb-3 text-cyan-600 text-3xl border border-cyan-200 box-glow-toska">
                                         <i class="fa-solid fa-qrcode"></i>
                                     </div>
-                                    <p class="font-bold text-slate-700 text-sm">Siap Menerima Scan Hardware Barcode / QR</p>
+                                    <p class="font-extrabold text-slate-700 text-sm">Siap Menerima Scan Hardware Barcode / QR</p>
                                     <p class="text-xs text-slate-500 mt-1">Foto rapi 4x6 & data siswa akan tampil otomatis secara tepat dan cepat.</p>
                                 </div>
 
@@ -310,30 +304,30 @@
                                         <div class="shrink-0 text-center">
                                             <div id="result-photo-container" class="relative">
                                                 <img id="result-photo" src="" alt="Foto Siswa 4x6" class="photo-4x6 hidden shadow-md">
-                                                <div id="result-avatar" class="photo-4x6 bg-gradient-to-tr from-slate-900 via-slate-800 to-cyan-700 text-cyan-300 font-extrabold text-5xl flex items-center justify-center shadow-md border-2 border-cyan-400">
+                                                <div id="result-avatar" class="photo-4x6 bg-gradient-to-tr from-slate-900 via-slate-800 to-cyan-700 text-cyan-300 font-black text-5xl flex items-center justify-center shadow-md border-2 border-cyan-400">
                                                     -
                                                 </div>
                                             </div>
-                                            <span class="inline-block mt-2 text-[10px] font-bold text-cyan-800 bg-cyan-100 px-2.5 py-0.5 rounded-full border border-cyan-300">Ukuran 4x6</span>
+                                            <span class="inline-block mt-2 text-[10px] font-extrabold text-cyan-800 bg-cyan-100 px-2.5 py-0.5 rounded-full border border-cyan-300">Format 4x6</span>
                                         </div>
 
                                         <div class="flex-1 w-full text-center sm:text-left space-y-2.5">
-                                            <div id="result-status-badge" class="inline-block px-3.5 py-1 rounded-full text-xs font-extrabold uppercase bg-emerald-100 text-emerald-800 border border-emerald-300">
+                                            <div id="result-status-badge" class="inline-block px-3.5 py-1 rounded-full text-xs font-black uppercase bg-emerald-100 text-emerald-800 border border-emerald-300">
                                                 Hadir Tepat Waktu
                                             </div>
-                                            <h3 id="result-name" class="font-extrabold text-slate-900 text-xl md:text-2xl leading-snug">--</h3>
-                                            <div class="text-xs font-mono text-slate-700 bg-white px-3 py-1.5 rounded-xl border border-slate-200 inline-block">
-                                                NISN: <span id="result-nisn" class="font-bold text-slate-900">--</span>
+                                            <h3 id="result-name" class="font-black text-slate-900 text-xl md:text-2xl leading-snug">--</h3>
+                                            <div class="text-xs font-mono text-slate-700 bg-white px-3 py-1.5 rounded-xl border border-slate-200 inline-block font-bold">
+                                                NISN: <span id="result-nisn" class="font-black text-slate-900">--</span>
                                             </div>
 
                                             <div class="grid grid-cols-2 gap-3 pt-2 text-xs">
                                                 <div class="bg-white p-3 rounded-xl border border-slate-200 text-left">
-                                                    <span class="text-slate-400 block text-[10px] uppercase font-bold">Kelas</span>
-                                                    <span id="result-kelas" class="font-extrabold text-slate-900 text-sm">--</span>
+                                                    <span class="text-slate-400 block text-[10px] uppercase font-extrabold">Kelas</span>
+                                                    <span id="result-kelas" class="font-black text-slate-900 text-sm">--</span>
                                                 </div>
                                                 <div class="bg-white p-3 rounded-xl border border-slate-200 text-left">
-                                                    <span class="text-slate-400 block text-[10px] uppercase font-bold">Jam Scan (WIT)</span>
-                                                    <span id="result-time" class="font-extrabold text-slate-900 text-sm">--</span>
+                                                    <span class="text-slate-400 block text-[10px] uppercase font-extrabold">Jam Scan (WIT)</span>
+                                                    <span id="result-time" class="font-black text-slate-900 text-sm">--</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -342,8 +336,8 @@
                             </div>
 
                             <div id="scan-wa-status-alert" class="mt-4 pt-3 border-t border-slate-100 text-[11px] text-slate-600 flex items-center justify-between">
-                                <span class="flex items-center gap-1.5 font-semibold"><i class="fa-brands fa-whatsapp text-emerald-500 text-base"></i> Notifikasi WhatsApp Orang Tua:</span>
-                                <span id="result-wa-text" class="font-bold text-slate-800 bg-emerald-50 text-emerald-800 px-2.5 py-0.5 rounded-md border border-emerald-200">Siap Kirim Pesan</span>
+                                <span class="flex items-center gap-1.5 font-bold"><i class="fa-brands fa-whatsapp text-emerald-500 text-base"></i> Notifikasi WA Orang Tua:</span>
+                                <span id="result-wa-text" class="font-black text-slate-800 bg-emerald-50 text-emerald-800 px-2.5 py-0.5 rounded-md border border-emerald-200">Terjadwal Kirim</span>
                             </div>
                         </div>
                     </div>
@@ -352,7 +346,7 @@
                     <div class="bg-white box-glow-toska rounded-3xl overflow-hidden shadow-sm">
                         <div class="p-5 border-b border-slate-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-slate-50/80">
                             <div>
-                                <h3 class="font-bold text-slate-900 text-base flex items-center gap-2">
+                                <h3 class="font-black text-slate-900 text-base flex items-center gap-2">
                                     <i class="fa-solid fa-list-check text-cyan-600"></i> Daftar Siswa Absen Hari Ini (Manokwari WIT)
                                 </h3>
                                 <p class="text-xs text-slate-500 mt-0.5">Daftar presensi siswa real-time yang tersimpan rapi.</p>
@@ -361,13 +355,13 @@
                             <!-- STATS COUNTER -->
                             <div class="flex items-center gap-3 w-full sm:w-auto">
                                 <div class="bg-emerald-50 border border-emerald-200 text-emerald-900 px-3 py-1.5 rounded-xl text-xs flex items-center gap-1.5 font-bold">
-                                    <i class="fa-solid fa-user-check text-emerald-600"></i> Hadir: <span id="today-count-hadir" class="text-sm font-extrabold">0</span>
+                                    <i class="fa-solid fa-user-check text-emerald-600"></i> Hadir: <span id="today-count-hadir" class="text-sm font-black">0</span>
                                 </div>
                                 <div class="bg-rose-50 border border-rose-200 text-rose-900 px-3 py-1.5 rounded-xl text-xs flex items-center gap-1.5 font-bold">
-                                    <i class="fa-solid fa-clock text-rose-600"></i> Terlambat: <span id="today-count-terlambat" class="text-sm font-extrabold">0</span>
+                                    <i class="fa-solid fa-clock text-rose-600"></i> Terlambat: <span id="today-count-terlambat" class="text-sm font-black">0</span>
                                 </div>
                                 <div class="bg-cyan-50 border border-cyan-200 text-cyan-900 px-3 py-1.5 rounded-xl text-xs flex items-center gap-1.5 font-bold">
-                                    Total: <span id="today-count-total" class="text-sm font-extrabold">0</span>
+                                    Total: <span id="today-count-total" class="text-sm font-black">0</span>
                                 </div>
                             </div>
                         </div>
@@ -394,7 +388,7 @@
                                     </tr>
                                 </thead>
                                 <tbody id="today-scan-table-body" class="text-xs md:text-sm divide-y divide-slate-100 bg-white">
-                                    <tr><td colspan="6" class="text-center py-8 text-slate-400">Belum ada data presensi hari ini. Silakan scan kartu siswa.</td></tr>
+                                    <tr><td colspan="6" class="text-center py-8 text-slate-400 font-medium">Belum ada data presensi hari ini. Silakan scan kartu siswa.</td></tr>
                                 </tbody>
                             </table>
                         </div>
@@ -407,7 +401,7 @@
                         <div class="p-6 border-b border-slate-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-slate-50/80">
                             <div class="flex items-center gap-3">
                                 <div class="w-10 h-10 rounded-2xl bg-rose-100 flex items-center justify-center text-rose-600"><i class="fa-solid fa-satellite-dish animate-pulse text-lg"></i></div>
-                                <div><h2 class="text-lg font-extrabold text-slate-900">Monitor Live Presensi Real-Time</h2><p class="text-xs text-slate-500">Pemantauan langsung kehadiran siswa hari ini secara otomatis.</p></div>
+                                <div><h2 class="text-lg font-black text-slate-900">Monitor Live Presensi Real-Time</h2><p class="text-xs text-slate-500">Pemantauan langsung kehadiran siswa hari ini secara otomatis.</p></div>
                             </div>
                             <div class="flex gap-3 w-full sm:w-auto items-center">
                                 <div class="bg-white px-4 py-2 rounded-2xl border border-cyan-200 box-glow-toska text-center flex-1 sm:flex-none">
@@ -420,7 +414,7 @@
                                 <table class="w-full text-left border-collapse min-w-[650px]">
                                     <thead><tr class="bg-slate-100 text-slate-700 text-xs uppercase tracking-wider border-b border-slate-200 font-bold"><th class="px-5 py-3.5 w-28">Waktu (WIT)</th><th class="px-5 py-3.5 w-32">NISN</th><th class="px-5 py-3.5">Nama Siswa</th><th class="px-5 py-3.5 text-center w-28">Kelas</th><th class="px-5 py-3.5 text-center w-32">Status</th></tr></thead>
                                     <tbody id="live-table-body" class="text-xs md:text-sm divide-y divide-slate-100 bg-white">
-                                        <tr id="empty-live"><td colspan="5" class="text-center py-8 text-slate-400">Belum ada siswa absen hari ini.</td></tr>
+                                        <tr id="empty-live"><td colspan="5" class="text-center py-8 text-slate-400 font-medium">Belum ada siswa absen hari ini.</td></tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -433,8 +427,8 @@
                     <div class="bg-white box-glow-toska rounded-3xl shadow-sm overflow-hidden mb-6">
                         <div class="p-6 border-b border-slate-100 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 bg-slate-50/80">
                             <div>
-                                <h2 class="text-lg font-extrabold text-slate-900">Data Induk Siswa</h2>
-                                <p class="text-xs text-slate-500">Kelola informasi siswa, NISN, foto 4x6, kelas (diketik & di-edit manual), serta nomor WA orang tua.</p>
+                                <h2 class="text-lg font-black text-slate-900">Data Induk Siswa</h2>
+                                <p class="text-xs text-slate-500">Kelola informasi siswa, NISN, foto 4x6, kelas, serta nomor WA orang tua.</p>
                             </div>
                             <div class="flex flex-wrap gap-2 w-full lg:w-auto">
                                 <button onclick="openAddStudentModal()" class="px-4 py-2.5 btn-glow-toska rounded-xl text-xs font-bold flex items-center gap-1.5"><i class="fa-solid fa-plus"></i> Tambah Siswa</button>
@@ -470,7 +464,7 @@
                     <div class="bg-white box-glow-toska rounded-3xl shadow-sm overflow-hidden mb-6">
                         <div class="p-6 border-b border-slate-100 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-slate-50/80">
                             <div>
-                                <h2 class="text-lg font-extrabold text-slate-900">Rekapan Data Absensi Siswa (Manokwari WIT)</h2>
+                                <h2 class="text-lg font-black text-slate-900">Rekapan Data Absensi Siswa (Manokwari WIT)</h2>
                                 <p class="text-xs text-slate-500">Laporan presensi harian, mingguan, dan bulanan tersimpan permanen berbasis zona waktu WIT.</p>
                             </div>
                             <div class="flex flex-wrap gap-2">
@@ -480,7 +474,7 @@
 
                         <!-- Panel Download Excel Modern & Matriks -->
                         <div class="px-6 pt-5 pb-5 bg-cyan-50/50 border-b border-slate-100 space-y-3">
-                            <div class="text-xs font-extrabold text-cyan-950 flex items-center gap-2">
+                            <div class="text-xs font-black text-cyan-950 flex items-center gap-2">
                                 <i class="fa-solid fa-file-excel text-emerald-600 text-base"></i> Download Laporan Excel Rapi, Tersusun Per Kelas & Persentase Kehadiran:
                             </div>
                             <div class="flex flex-wrap items-center gap-3">
@@ -562,8 +556,8 @@
                                 <i class="fa-solid fa-bed animate-bounce"></i>
                             </div>
                             <div>
-                                <h3 class="font-extrabold text-lg">Sistem WA Beristirahat 5 Menit (Aturan Anti-Spam)</h3>
-                                <p class="text-xs text-amber-100 leading-relaxed">
+                                <h3 class="font-black text-lg">Sistem WA Beristirahat 5 Menit (Aturan Anti-Spam)</h3>
+                                <p class="text-xs text-amber-100 leading-relaxed font-medium">
                                     Sudah mengirim 5 pesan siswa. Sistem otomatis beristirahat selama 5 menit untuk mencegah nomor terblokir. Pengiriman akan berlanjut otomatis setelah waktu istirahat selesai.
                                 </p>
                             </div>
@@ -580,7 +574,7 @@
                                 <h3 class="font-bold text-slate-900 text-base flex items-center gap-2">
                                     <i class="fa-brands fa-whatsapp text-emerald-500 text-2xl"></i> WA Gateway Center
                                 </h3>
-                                <span id="wa-queue-status-pill" class="text-[11px] font-extrabold bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full border border-emerald-300">
+                                <span id="wa-queue-status-pill" class="text-[11px] font-black bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full border border-emerald-300">
                                     Sistem Siap
                                 </span>
                             </div>
@@ -588,19 +582,19 @@
                             <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2.5 text-xs">
                                 <div class="flex justify-between items-center">
                                     <span class="text-slate-500 font-medium">Batas Per Batch:</span>
-                                    <span class="font-extrabold text-slate-900">5 Pesan max</span>
+                                    <span class="font-black text-slate-900">5 Pesan max</span>
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-slate-500 font-medium">Durasi Jeda Istirahat:</span>
-                                    <span class="font-extrabold text-amber-600">5 Menit Otomatis</span>
+                                    <span class="font-black text-amber-600">5 Menit Otomatis</span>
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-slate-500 font-medium">Progress Batch Ini:</span>
-                                    <span id="wa-batch-counter" class="font-extrabold text-cyan-600">0 / 5 Pesan</span>
+                                    <span id="wa-batch-counter" class="font-black text-cyan-600">0 / 5 Pesan</span>
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-slate-500 font-medium">Variasi Pesan:</span>
-                                    <span class="font-extrabold text-emerald-600">100+ Template Resmi Acak</span>
+                                    <span class="font-black text-emerald-600">100+ Template Resmi Acak</span>
                                 </div>
                                 <div class="flex justify-between items-center pt-1 border-t border-slate-200">
                                     <span class="text-slate-500 font-medium">API Key Configured:</span>
@@ -643,7 +637,7 @@
                                         </tr>
                                     </thead>
                                     <tbody id="wa-queue-table-body" class="text-xs divide-y divide-slate-100 bg-white">
-                                        <tr><td colspan="4" class="text-center py-8 text-slate-400">Antrean pesan kosong. Pesan masuk otomatis saat siswa scan.</td></tr>
+                                        <tr><td colspan="4" class="text-center py-8 text-slate-400 font-medium">Antrean pesan kosong. Pesan masuk otomatis saat siswa scan.</td></tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -659,7 +653,7 @@
     <div id="modal-student" class="fixed inset-0 z-[150] hidden flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-fade-in">
         <div class="bg-white box-glow-toska rounded-3xl max-w-lg w-full p-6 shadow-2xl animate-slide-up">
             <div class="flex justify-between items-center pb-4 border-b border-slate-100">
-                <h3 id="modal-student-title" class="text-lg font-extrabold text-slate-900">Tambah Data Siswa</h3>
+                <h3 id="modal-student-title" class="text-lg font-black text-slate-900">Tambah Data Siswa</h3>
                 <button onclick="closeStudentModal()" class="text-slate-400 hover:text-slate-600 p-1"><i class="fa-solid fa-xmark text-xl"></i></button>
             </div>
             
@@ -668,7 +662,7 @@
                 
                 <div>
                     <label class="block text-xs font-bold text-slate-800 mb-1">NISN (Nomor Induk Siswa Nasional) *</label>
-                    <input type="text" id="student-input-nisn" required placeholder="Contoh: 0081234567" class="w-full px-4 py-2.5 border border-slate-300 rounded-xl text-xs sm:text-sm focus:ring-2 focus:ring-cyan-500 focus:outline-none font-mono font-medium">
+                    <input type="text" id="student-input-nisn" required placeholder="Contoh: 0081234567" class="w-full px-4 py-2.5 border border-slate-300 rounded-xl text-xs sm:text-sm focus:ring-2 focus:ring-cyan-500 focus:outline-none font-mono font-bold">
                 </div>
 
                 <div>
@@ -720,7 +714,7 @@
     <div id="modal-batch-photo" class="fixed inset-0 z-[150] hidden flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-fade-in">
         <div class="bg-white box-glow-toska rounded-3xl max-w-lg w-full p-6 shadow-2xl animate-slide-up">
             <div class="flex justify-between items-center pb-4 border-b border-slate-100">
-                <h3 class="text-lg font-extrabold text-slate-900"><i class="fa-solid fa-images text-purple-600 mr-2"></i>Upload Foto Banyak Siswa (NISN)</h3>
+                <h3 class="text-lg font-black text-slate-900"><i class="fa-solid fa-images text-purple-600 mr-2"></i>Upload Foto Banyak Siswa (NISN)</h3>
                 <button onclick="closeBatchPhotoModal()" class="text-slate-400 hover:text-slate-600 p-1"><i class="fa-solid fa-xmark text-xl"></i></button>
             </div>
             
@@ -762,13 +756,13 @@
             <div class="w-20 h-20 bg-amber-100 text-amber-600 rounded-3xl flex items-center justify-center mx-auto mb-4 text-3xl border-2 border-amber-300 box-glow-toska">
                 <i class="fa-solid fa-triangle-exclamation animate-bounce"></i>
             </div>
-            <h3 class="text-xl font-extrabold text-slate-900 mb-1">Peringatan Scan Dobel!</h3>
-            <p class="text-xs font-bold text-amber-600 mb-4 uppercase tracking-wider">Siswa Sudah Tercatat Absen Hari Ini</p>
+            <h3 class="text-xl font-black text-slate-900 mb-1">Peringatan Scan Dobel!</h3>
+            <p class="text-xs font-extrabold text-amber-600 mb-4 uppercase tracking-wider">Siswa Sudah Tercatat Absen Hari Ini</p>
             
             <div class="bg-amber-50/90 border border-amber-200 rounded-2xl p-4 mb-6 text-left space-y-1.5 text-xs">
-                <div class="text-slate-800">Nama Siswa: <span id="warn-double-nama" class="font-bold text-slate-950">--</span></div>
+                <div class="text-slate-800">Nama Siswa: <span id="warn-double-nama" class="font-black text-slate-950">--</span></div>
                 <div class="text-slate-800">NISN: <span id="warn-double-nisn" class="font-bold font-mono text-slate-950">--</span></div>
-                <div class="text-slate-800">Waktu Scan Pertama: <span id="warn-double-waktu" class="font-extrabold font-mono text-amber-800">--</span></div>
+                <div class="text-slate-800">Waktu Scan Pertama: <span id="warn-double-waktu" class="font-black font-mono text-amber-800">--</span></div>
             </div>
 
             <button onclick="closeDoubleScanWarning()" class="w-full py-3.5 bg-slate-900 hover:bg-slate-800 text-cyan-300 border border-cyan-400 font-bold text-xs rounded-2xl shadow-lg transition">
@@ -790,10 +784,11 @@
         
         let activeRecordFilter = 'semua';
         
-        // Storage Stores (In-Memory Datastore)
+        // Storage Stores (In-Memory Datastore synced with LocalStorage)
         let studentsData = [];
         let attendanceLogs = [];
         let waQueue = [];
+        let isProctorLoggedIn = false;
         
         // WA Queue & Rest Controls
         let waBatchCounter = 0; // Counts 1..5
@@ -866,6 +861,7 @@
             loadInitialDataFromStorage();
             initHardwareScannerListener();
             setupAutoSaveAndQueueWorker();
+            checkAuthSession();
             
             // Set default month picker
             const now = new Date();
@@ -879,6 +875,38 @@
                 if (scannerInput) scannerInput.focus();
             }, 500);
         };
+
+        // AUTH & SESSION MANAGEMENT
+        function checkAuthSession() {
+            const authStr = localStorage.getItem('smp6_proctor_auth');
+            if (authStr === 'true') {
+                isProctorLoggedIn = true;
+                document.getElementById('login-screen').classList.add('hidden');
+            } else {
+                isProctorLoggedIn = false;
+                document.getElementById('login-screen').classList.remove('hidden');
+            }
+        }
+
+        function loginWithGoogle() {
+            const btn = document.getElementById('btn-login-google');
+            btn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> <span>Menghubungkan Gmail Proktor...</span>`;
+            
+            setTimeout(() => {
+                isProctorLoggedIn = true;
+                localStorage.setItem('smp6_proctor_auth', 'true');
+                showToast("Berhasil Login Gmail Proktor!", "success");
+                document.getElementById('login-screen').classList.add('hidden');
+                btn.innerHTML = `<svg class="w-5 h-5 shrink-0 bg-white rounded-full p-0.5" viewBox="0 0 24 24"><path fill="#EA4335" d="M12 5c1.6 0 3 .6 4.1 1.6l3.1-3.1C17.3 1.8 14.8 1 12 1 7.5 1 3.7 3.6 1.9 7.3l3.7 2.9C6.5 7.3 9 5 12 5z"/><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.5h6.5c-.3 1.5-1.1 2.8-2.4 3.7l3.7 2.9c2.2-2 3.7-5 3.7-8.8z"/><path fill="#FBBC05" d="M5.6 14.8c-.3-.8-.4-1.8-.4-2.8s.1-2 .4-2.8L1.9 6.3C.7 8.7 0 10.3 0 12s.7 3.3 1.9 5.7l3.7-2.9z"/><path fill="#34A853" d="M12 23c3.2 0 6-1.1 8-3l-3.7-2.9c-1.1.7-2.5 1.2-4.3 1.2-3 0-5.5-2.3-6.4-5.2L1.9 16C3.7 19.7 7.5 23 12 23z"/></svg><span>Masuk Akun Proktor Gmail</span>`;
+            }, 600);
+        }
+
+        function logoutGoogle() {
+            isProctorLoggedIn = false;
+            localStorage.removeItem('smp6_proctor_auth');
+            document.getElementById('login-screen').classList.remove('hidden');
+            showToast("Sesi Proktor telah keluar.", "info");
+        }
 
         // WIT CLOCK TIMER
         function startClockWIT() {
@@ -904,7 +932,7 @@
             }, 1000);
         }
 
-        // NETWORK MONITOR (GREEN = CONNECTED, RED = DISCONNECTED)
+        // NETWORK MONITOR
         function initNetworkStatusMonitor() {
             function updateOnlineStatus() {
                 const dot = document.getElementById('net-status-dot');
@@ -922,24 +950,25 @@
             updateOnlineStatus();
         }
 
-        // PERSISTENT DATA STORAGE (LOCALSTORAGE SYNC)
+        // PERSISTENT LOCAL DATA STORAGE
         function loadInitialDataFromStorage() {
             try {
-                const storedStudents = localStorage.getItem('smp6_students_v2');
+                const storedStudents = localStorage.getItem('smp6_students_v3');
                 if (storedStudents) studentsData = JSON.parse(storedStudents);
                 
-                const storedLogs = localStorage.getItem('smp6_attendance_v2');
+                const storedLogs = localStorage.getItem('smp6_attendance_v3');
                 if (storedLogs) attendanceLogs = JSON.parse(storedLogs);
 
-                const storedWA = localStorage.getItem('smp6_wa_queue_v2');
+                const storedWA = localStorage.getItem('smp6_wa_queue_v3');
                 if (storedWA) waQueue = JSON.parse(storedWA);
 
-                // Default sample students if storage empty
+                // Default sample students if empty
                 if (!studentsData || studentsData.length === 0) {
                     studentsData = [
                         { nisn: "0081122334", nama: "ALEXANDER PAPUA", kelas: "7A", wa_ortu: "081234567890", photo: "" },
                         { nisn: "0082233445", nama: "BEATRIX MANOKWARI", kelas: "7A", wa_ortu: "081298765432", photo: "" },
-                        { nisn: "0083344556", nama: "CHRISTIAN RUMAKIEK", kelas: "8B", wa_ortu: "082199887766", photo: "" }
+                        { nisn: "0083344556", nama: "CHRISTIAN RUMAKIEK", kelas: "8B", wa_ortu: "082199887766", photo: "" },
+                        { nisn: "0084455667", nama: "DANIEL MANDACAN", kelas: "9C", wa_ortu: "081344556677", photo: "" }
                     ];
                     saveStudentsToStorage();
                 }
@@ -955,19 +984,19 @@
         }
 
         function saveStudentsToStorage() {
-            localStorage.setItem('smp6_students_v2', JSON.stringify(studentsData));
+            localStorage.setItem('smp6_students_v3', JSON.stringify(studentsData));
             updateClassDropdowns();
             renderStudentTable();
         }
 
         function saveAttendanceToStorage() {
-            localStorage.setItem('smp6_attendance_v2', JSON.stringify(attendanceLogs));
+            localStorage.setItem('smp6_attendance_v3', JSON.stringify(attendanceLogs));
             renderTodayScanTable();
             renderAllRecords();
         }
 
         function saveWAQueueToStorage() {
-            localStorage.setItem('smp6_wa_queue_v2', JSON.stringify(waQueue));
+            localStorage.setItem('smp6_wa_queue_v3', JSON.stringify(waQueue));
             renderWAQueueTable();
         }
 
@@ -987,23 +1016,6 @@
                 });
                 select.value = currentVal;
             });
-        }
-
-        // AUTH & LOGIN LOGIC
-        function loginWithGoogle() {
-            const btn = document.getElementById('btn-login-google');
-            btn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> <span>Menghubungkan Gmail Proktor...</span>`;
-            
-            setTimeout(() => {
-                showToast("Berhasil Login Gmail Proktor!", "success");
-                document.getElementById('login-screen').classList.add('hidden');
-                btn.innerHTML = `<svg class="w-5 h-5 shrink-0 bg-white rounded-full p-0.5" viewBox="0 0 24 24"><path fill="#EA4335" d="M12 5c1.6 0 3 .6 4.1 1.6l3.1-3.1C17.3 1.8 14.8 1 12 1 7.5 1 3.7 3.6 1.9 7.3l3.7 2.9C6.5 7.3 9 5 12 5z"/></svg><span>Masuk Akun Proktor Gmail</span>`;
-            }, 700);
-        }
-
-        function logoutGoogle() {
-            document.getElementById('login-screen').classList.remove('hidden');
-            showToast("Anda telah keluar dari sesi proktor.", "info");
         }
 
         function switchTab(tabName) {
@@ -1030,7 +1042,7 @@
             if (tabName === 'live') pageTitle.innerText = "Live Monitoring Presensi";
             if (tabName === 'students') pageTitle.innerText = "Kelola Data Induk Siswa";
             if (tabName === 'records') pageTitle.innerText = "Rekapan Laporan Absensi (WIT)";
-            if (tabName === 'whatsapp') pageTitle.innerText = "WhatsApp Notification Queue & Anti-Spam";
+            if (tabName === 'whatsapp') pageTitle.innerText = "WhatsApp Gateway Center & Anti-Spam";
 
             if (tabName === 'scan') {
                 setTimeout(() => {
@@ -1091,7 +1103,39 @@
             return `${hour}:${minute}:${second}`;
         }
 
-        // CORE SCAN PROCESSING
+        // AUDIO BEEP SYNTHESIZER
+        function playAudioBeep(type = 'success') {
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                if (type === 'success') {
+                    osc.frequency.setValueAtTime(880, ctx.currentTime);
+                    gain.gain.setValueAtTime(0.15, ctx.currentTime);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.15);
+                } else if (type === 'warning') {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(300, ctx.currentTime);
+                    gain.gain.setValueAtTime(0.25, ctx.currentTime);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.35);
+                } else if (type === 'late') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(440, ctx.currentTime);
+                    gain.gain.setValueAtTime(0.2, ctx.currentTime);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.25);
+                }
+            } catch (e) {
+                console.log("Audio not supported");
+            }
+        }
+
+        // CORE SCAN PROCESSING & DUPLICATE PREVENTION
         function processScanNISN(rawNisn) {
             if (!rawNisn) return;
             const cleanNisn = rawNisn.trim();
@@ -1108,8 +1152,8 @@
                 return;
             }
 
-            // Cooldown check (5s)
-            if (scanCooldownMap[cleanNisn] && (Date.now() - scanCooldownMap[cleanNisn] < 5000)) {
+            // Cooldown check (3s)
+            if (scanCooldownMap[cleanNisn] && (Date.now() - scanCooldownMap[cleanNisn] < 3000)) {
                 showToast(`Peringatan: NISN ${cleanNisn} baru saja di-scan!`, "warning");
                 return;
             }
@@ -1118,8 +1162,8 @@
             // 2. SEARCH STUDENT IN DATASTORE
             const student = studentsData.find(s => s.nisn === cleanNisn);
             if (!student) {
-                showToast(`NISN ${cleanNisn} Tidak Ditemukan!`, "error");
-                playAudioBeep('error');
+                showToast(`NISN ${cleanNisn} Tidak Ditemukan dalam Data Induk!`, "error");
+                playAudioBeep('warning');
                 return;
             }
 
@@ -1203,7 +1247,7 @@
             void container.offsetWidth;
             container.classList.add(statusText.toLowerCase().includes('hadir') ? 'scan-flash-success' : 'scan-flash-warning');
 
-            document.getElementById('result-wa-text').innerText = isWAResting ? "Antrean (Sistem Rest 5m)" : "Masuk Antrean WA";
+            document.getElementById('result-wa-text').innerText = isWAResting ? "Antrean (Istirahat 5m)" : "Masuk Antrean WA";
         }
 
         function showDoubleScanWarning(nama, nisn, waktu) {
@@ -1263,7 +1307,7 @@
         function setupAutoSaveAndQueueWorker() {
             setInterval(() => {
                 processWAQueueWorker();
-            }, 3000);
+            }, 2500);
         }
 
         function processWAQueueWorker() {
@@ -1289,6 +1333,9 @@
             document.getElementById('wa-sample-preview').innerText = pendingItem.pesan;
             document.getElementById('wa-batch-counter').innerText = `${waBatchCounter} / 5 Pesan`;
 
+            // Fonnte API Request simulation / execution
+            sendFonnteWA(pendingItem.wa_ortu, pendingItem.pesan);
+
             saveWAQueueToStorage();
             isProcessingWAQueue = false;
 
@@ -1297,13 +1344,31 @@
             }
         }
 
+        function sendFonnteWA(targetNumber, message) {
+            const formData = new FormData();
+            formData.append('target', targetNumber);
+            formData.append('message', message);
+
+            fetch('https://api.fonnte.com/send', {
+                method: 'POST',
+                headers: {
+                    'Authorization': FONNTE_WA_API_KEY
+                },
+                body: formData
+            }).then(r => r.json()).then(res => {
+                console.log("Fonnte WA Response:", res);
+            }).catch(err => {
+                console.log("Fonnte WA error or offline fallback", err);
+            });
+        }
+
         function startWARestTimer() {
             isWAResting = true;
             waRestRemainingSeconds = 5 * 60; // 5 Minutes = 300 Seconds
 
             document.getElementById('wa-rest-banner').classList.remove('hidden');
             const pill = document.getElementById('wa-queue-status-pill');
-            pill.className = "text-[11px] font-extrabold bg-amber-100 text-amber-800 px-3 py-1 rounded-full border border-amber-300 animate-pulse";
+            pill.className = "text-[11px] font-black bg-amber-100 text-amber-800 px-3 py-1 rounded-full border border-amber-300 animate-pulse";
             pill.innerText = "Istirahat 5 Menit";
 
             if (waRestTimerInterval) clearInterval(waRestTimerInterval);
@@ -1316,7 +1381,7 @@
                     waBatchCounter = 0;
                     document.getElementById('wa-rest-banner').classList.add('hidden');
                     document.getElementById('wa-batch-counter').innerText = "0 / 5 Pesan";
-                    pill.className = "text-[11px] font-extrabold bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full border border-emerald-300";
+                    pill.className = "text-[11px] font-black bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full border border-emerald-300";
                     pill.innerText = "Sistem Siap";
                     showToast("Masa Istirahat WA 5 Menit Selesai! Antrean Dilanjutkan.", "success");
                     saveWAQueueToStorage();
@@ -1370,7 +1435,7 @@
             document.getElementById('live-total-today').innerText = todayLogs.length;
 
             if (filtered.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="6" class="text-center py-8 text-slate-400">Belum ada siswa absen hari ini.</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="6" class="text-center py-8 text-slate-400 font-medium">Belum ada siswa absen hari ini.</td></tr>`;
                 renderLiveTable(todayLogs);
                 return;
             }
@@ -1380,7 +1445,7 @@
                     <td class="px-5 py-3 text-center font-bold text-slate-500">${i + 1}</td>
                     <td class="px-5 py-3 font-mono font-bold text-slate-800">${l.jam}</td>
                     <td class="px-5 py-3 font-mono font-bold text-cyan-700">${l.nisn}</td>
-                    <td class="px-5 py-3 font-extrabold text-slate-900">${l.nama}</td>
+                    <td class="px-5 py-3 font-black text-slate-900">${l.nama}</td>
                     <td class="px-5 py-3 text-center"><span class="bg-cyan-100 text-cyan-900 px-2.5 py-1 rounded-lg font-bold border border-cyan-300">${l.kelas}</span></td>
                     <td class="px-5 py-3 text-center">
                         ${l.status.toLowerCase().includes('hadir')
@@ -1399,7 +1464,7 @@
             if (!liveTbody) return;
 
             if (todayLogs.length === 0) {
-                liveTbody.innerHTML = `<tr><td colspan="5" class="text-center py-8 text-slate-400">Belum ada siswa absen hari ini.</td></tr>`;
+                liveTbody.innerHTML = `<tr><td colspan="5" class="text-center py-8 text-slate-400 font-medium">Belum ada siswa absen hari ini.</td></tr>`;
                 return;
             }
 
@@ -1407,7 +1472,7 @@
                 <tr class="hover:bg-cyan-50/50 transition">
                     <td class="px-5 py-3.5 font-mono font-bold text-slate-800">${l.jam}</td>
                     <td class="px-5 py-3.5 font-mono font-bold text-cyan-700">${l.nisn}</td>
-                    <td class="px-5 py-3.5 font-extrabold text-slate-900">${l.nama}</td>
+                    <td class="px-5 py-3.5 font-black text-slate-900">${l.nama}</td>
                     <td class="px-5 py-3.5 text-center"><span class="bg-cyan-100 text-cyan-900 px-2.5 py-1 rounded-lg font-bold border border-cyan-300">${l.kelas}</span></td>
                     <td class="px-5 py-3.5 text-center">
                         ${l.status.toLowerCase().includes('hadir')
@@ -1433,7 +1498,7 @@
             filtered.sort((a,b) => a.kelas.localeCompare(b.kelas) || a.nama.localeCompare(b.nama));
 
             if (filtered.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="6" class="text-center py-8 text-slate-400">Data siswa tidak ditemukan.</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="6" class="text-center py-8 text-slate-400 font-medium">Data siswa tidak ditemukan.</td></tr>`;
                 return;
             }
 
@@ -1446,35 +1511,31 @@
                         }
                     </td>
                     <td class="px-5 py-3 font-mono font-bold text-slate-900">${s.nisn}</td>
-                    <td class="px-5 py-3 font-extrabold text-slate-900">${s.nama}</td>
+                    <td class="px-5 py-3 font-black text-slate-900">${s.nama}</td>
                     <td class="px-5 py-3 text-center"><span class="bg-cyan-100 text-cyan-900 px-2.5 py-1 rounded-lg font-bold border border-cyan-300">${s.kelas}</span></td>
                     <td class="px-5 py-3 font-mono text-slate-700 font-medium">${s.wa_ortu || '-'}</td>
                     <td class="px-5 py-3 text-center space-x-1">
-                        <button onclick="editStudent('${s.nisn}')" class="px-2.5 py-1.5 bg-amber-50 text-amber-600 hover:bg-amber-100 rounded-lg font-bold border border-amber-300 text-xs transition" title="Edit Data Siswa">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </button>
-                        <button onclick="deleteStudent('${s.nisn}')" class="px-2.5 py-1.5 bg-rose-50 text-rose-600 hover:bg-rose-100 rounded-lg font-bold border border-rose-300 text-xs transition" title="Hapus Siswa">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
+                        <button onclick="editStudent('${s.nisn}')" class="px-2.5 py-1.5 bg-amber-50 text-amber-600 hover:bg-amber-100 rounded-lg font-bold border border-amber-300 text-xs transition" title="Edit Data"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+                        <button onclick="deleteStudent('${s.nisn}')" class="px-2.5 py-1.5 bg-rose-50 text-rose-600 hover:bg-rose-100 rounded-lg font-bold border border-rose-300 text-xs transition" title="Hapus Data"><i class="fa-solid fa-trash"></i></button>
                     </td>
                 </tr>
             `).join('');
         }
 
-        // STUDENT MODAL FORM
-        let tempPhotoBase64 = "";
-
+        // CRUD STUDENT MODALS & ACTIONS
         function openAddStudentModal() {
-            document.getElementById('modal-student-title').innerText = "Tambah Data Siswa Baru";
+            document.getElementById('modal-student-title').innerText = "Tambah Data Siswa";
             document.getElementById('student-edit-id').value = "";
             document.getElementById('student-input-nisn').value = "";
-            document.getElementById('student-input-nisn').readOnly = false;
+            document.getElementById('student-input-nisn').removeAttribute('readonly');
             document.getElementById('student-input-nama').value = "";
             document.getElementById('student-input-kelas').value = "";
             document.getElementById('student-input-wa').value = "";
             document.getElementById('student-input-photo-preview').classList.add('hidden');
+            document.getElementById('student-input-photo-preview').src = "";
             document.getElementById('student-input-photo-icon').classList.remove('hidden');
-            tempPhotoBase64 = "";
+            document.getElementById('student-input-photo-file').value = "";
+            
             document.getElementById('modal-student').classList.remove('hidden');
         }
 
@@ -1485,21 +1546,18 @@
             document.getElementById('modal-student-title').innerText = "Edit Data Siswa";
             document.getElementById('student-edit-id').value = student.nisn;
             document.getElementById('student-input-nisn').value = student.nisn;
-            document.getElementById('student-input-nisn').readOnly = true;
+            document.getElementById('student-input-nisn').setAttribute('readonly', 'true');
             document.getElementById('student-input-nama').value = student.nama;
             document.getElementById('student-input-kelas').value = student.kelas;
             document.getElementById('student-input-wa').value = student.wa_ortu || "";
 
-            tempPhotoBase64 = student.photo || "";
-            const imgPreview = document.getElementById('student-input-photo-preview');
-            const iconPreview = document.getElementById('student-input-photo-icon');
             if (student.photo) {
-                imgPreview.src = student.photo;
-                imgPreview.classList.remove('hidden');
-                iconPreview.classList.add('hidden');
+                document.getElementById('student-input-photo-preview').src = student.photo;
+                document.getElementById('student-input-photo-preview').classList.remove('hidden');
+                document.getElementById('student-input-photo-icon').classList.add('hidden');
             } else {
-                imgPreview.classList.add('hidden');
-                iconPreview.classList.remove('hidden');
+                document.getElementById('student-input-photo-preview').classList.add('hidden');
+                document.getElementById('student-input-photo-icon').classList.remove('hidden');
             }
 
             document.getElementById('modal-student').classList.remove('hidden');
@@ -1509,47 +1567,58 @@
             document.getElementById('modal-student').classList.add('hidden');
         }
 
-        function previewStudentPhotoInput(e) {
-            const file = e.target.files[0];
-            if (!file) return;
-
-            const reader = new FileReader();
-            reader.onload = function(evt) {
-                tempPhotoBase64 = evt.target.result;
-                const imgPreview = document.getElementById('student-input-photo-preview');
-                const iconPreview = document.getElementById('student-input-photo-icon');
-                imgPreview.src = tempPhotoBase64;
-                imgPreview.classList.remove('hidden');
-                iconPreview.classList.add('hidden');
-            };
-            reader.readAsDataURL(file);
+        function previewStudentPhotoInput(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('student-input-photo-preview').src = e.target.result;
+                    document.getElementById('student-input-photo-preview').classList.remove('hidden');
+                    document.getElementById('student-input-photo-icon').classList.add('hidden');
+                };
+                reader.readAsDataURL(file);
+            }
         }
 
-        function saveStudentForm(e) {
-            e.preventDefault();
+        function saveStudentForm(event) {
+            event.preventDefault();
             const editId = document.getElementById('student-edit-id').value;
             const nisn = document.getElementById('student-input-nisn').value.trim();
             const nama = document.getElementById('student-input-nama').value.trim().toUpperCase();
             const kelas = document.getElementById('student-input-kelas').value.trim().toUpperCase();
-            const wa_ortu = document.getElementById('student-input-wa').value.trim();
+            const wa = document.getElementById('student-input-wa').value.trim();
+            const photoSrc = document.getElementById('student-input-photo-preview').src;
 
             if (!nisn || !nama || !kelas) {
-                showToast("Lengkapi semua field wajib!", "error");
+                showToast("Lengkapi field NISN, Nama, dan Kelas!", "error");
                 return;
             }
 
             if (editId) {
-                const index = studentsData.findIndex(s => s.nisn === editId);
-                if (index !== -1) {
-                    studentsData[index] = { nisn, nama, kelas, wa_ortu, photo: tempPhotoBase64 || studentsData[index].photo };
+                // UPDATE
+                const idx = studentsData.findIndex(s => s.nisn === editId);
+                if (idx !== -1) {
+                    studentsData[idx].nama = nama;
+                    studentsData[idx].kelas = kelas;
+                    studentsData[idx].wa_ortu = wa;
+                    if (photoSrc && !photoSrc.endsWith('#')) {
+                        studentsData[idx].photo = photoSrc;
+                    }
                 }
                 showToast("Data siswa berhasil diperbarui!", "success");
             } else {
+                // ADD NEW
                 if (studentsData.some(s => s.nisn === nisn)) {
                     showToast("NISN sudah terdaftar!", "error");
                     return;
                 }
-                studentsData.push({ nisn, nama, kelas, wa_ortu, photo: tempPhotoBase64 });
+                studentsData.push({
+                    nisn: nisn,
+                    nama: nama,
+                    kelas: kelas,
+                    wa_ortu: wa,
+                    photo: photoSrc && !photoSrc.endsWith('#') ? photoSrc : ""
+                });
                 showToast("Siswa baru berhasil ditambahkan!", "success");
             }
 
@@ -1558,7 +1627,7 @@
         }
 
         function deleteStudent(nisn) {
-            if (confirm(`Hapus data siswa NISN ${nisn}?`)) {
+            if (confirm(`Yakin ingin menghapus data siswa NISN: ${nisn}?`)) {
                 studentsData = studentsData.filter(s => s.nisn !== nisn);
                 saveStudentsToStorage();
                 showToast("Data siswa berhasil dihapus.", "info");
@@ -1566,16 +1635,16 @@
         }
 
         function confirmDeleteAllStudents() {
-            if (confirm("PERINGATAN: Apakah Anda yakin ingin MENGHAPUS SELURUH DATA SISWA?")) {
+            if (confirm("PERINGATAN: Apakah Anda yakin ingin menghapus SELURUH Data Induk Siswa? Action ini tidak dapat dibatalkan!")) {
                 studentsData = [];
                 saveStudentsToStorage();
-                showToast("Seluruh data siswa telah dihapus.", "warning");
+                showToast("Seluruh data siswa telah dibersihkan.", "warning");
             }
         }
 
-        // BATCH PHOTO UPLOAD BY NISN FILENAME
+        // BATCH PHOTO UPLOADER
         function openBatchPhotoModal() {
-            document.getElementById('batch-photo-files').value = '';
+            document.getElementById('batch-photo-files').value = "";
             document.getElementById('batch-photo-progress').classList.add('hidden');
             document.getElementById('modal-batch-photo').classList.remove('hidden');
         }
@@ -1584,11 +1653,10 @@
             document.getElementById('modal-batch-photo').classList.add('hidden');
         }
 
-        async function processBatchPhotos() {
-            const fileInput = document.getElementById('batch-photo-files');
-            const files = fileInput.files;
+        function processBatchPhotos() {
+            const files = document.getElementById('batch-photo-files').files;
             if (!files || files.length === 0) {
-                showToast("Pilih setidaknya satu file foto!", "error");
+                showToast("Pilih setidaknya 1 file foto!", "error");
                 return;
             }
 
@@ -1597,48 +1665,48 @@
             const percentText = document.getElementById('batch-photo-percent');
             progressBox.classList.remove('hidden');
 
-            let updatedCount = 0;
+            let processed = 0;
+            let matchedCount = 0;
 
-            for (let i = 0; i < files.length; i++) {
-                const file = files[i];
-                const nisn = file.name.substring(0, file.name.lastIndexOf('.')) || file.name;
-                
-                const studentIndex = studentsData.findIndex(s => s.nisn === nisn);
-                if (studentIndex !== -1) {
-                    const base64 = await readFileAsDataURL(file);
-                    studentsData[studentIndex].photo = base64;
-                    updatedCount++;
-                }
+            Array.from(files).forEach((file, index) => {
+                const filename = file.name;
+                const nisnMatch = filename.split('.')[0].trim();
 
-                const percent = Math.round(((i + 1) / files.length) * 100);
-                progressBar.style.width = `${percent}%`;
-                percentText.innerText = `${percent}%`;
-            }
-
-            saveStudentsToStorage();
-            closeBatchPhotoModal();
-            showToast(`Berhasil menyinkronkan ${updatedCount} foto siswa!`, "success");
-        }
-
-        function readFileAsDataURL(file) {
-            return new Promise((resolve, reject) => {
                 const reader = new FileReader();
-                reader.onload = (e) => resolve(e.target.result);
-                reader.onerror = (e) => reject(e);
+                reader.onload = function(e) {
+                    const studentIdx = studentsData.findIndex(s => s.nisn === nisnMatch);
+                    if (studentIdx !== -1) {
+                        studentsData[studentIdx].photo = e.target.result;
+                        matchedCount++;
+                    }
+
+                    processed++;
+                    const percent = Math.round((processed / files.length) * 100);
+                    progressBar.style.width = percent + '%';
+                    percentText.innerText = percent + '%';
+
+                    if (processed === files.length) {
+                        saveStudentsToStorage();
+                        setTimeout(() => {
+                            closeBatchPhotoModal();
+                            showToast(`Upload foto selesai! ${matchedCount} foto cocok dengan NISN.`, "success");
+                        }, 500);
+                    }
+                };
                 reader.readAsDataURL(file);
             });
         }
 
-        // IMPORT / EXPORT EXCEL FOR STUDENTS
+        // EXCEL IMPORT & EXPORT
         function downloadExcelTemplate() {
             const templateData = [
-                { NISN: "0081234567", Nama: "CONTOH SISWA 1", Kelas: "7A", WA_OrangTua: "081234567890" },
-                { NISN: "0087654321", Nama: "CONTOH SISWA 2", Kelas: "8B", WA_OrangTua: "081298765432" }
+                { "NISN": "0081122334", "Nama Siswa": "ALEXANDER PAPUA", "Kelas": "7A", "No WA Ortu": "081234567890" },
+                { "NISN": "0082233445", "Nama Siswa": "BEATRIX MANOKWARI", "Kelas": "7B", "No WA Ortu": "081298765432" }
             ];
             const ws = XLSX.utils.json_to_sheet(templateData);
             const wb = XLSX.utils.book_new();
-            XLSX.utils.book_append_sheet(wb, ws, "Template_Siswa");
-            XLSX.writeFile(wb, "Template_Import_Siswa_SMPN6.xlsx");
+            XLSX.utils.book_append_sheet(wb, ws, "Template Siswa");
+            XLSX.writeFile(wb, "Template_Data_Siswa_SMPN6.xlsx");
         }
 
         function importStudentsFromExcel(event) {
@@ -1650,35 +1718,50 @@
                 try {
                     const data = new Uint8Array(e.target.result);
                     const workbook = XLSX.read(data, { type: 'array' });
-                    const sheetName = workbook.SheetNames[0];
-                    const json = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
+                    const firstSheetName = workbook.SheetNames[0];
+                    const worksheet = workbook.Sheets[firstSheetName];
+                    const jsonData = XLSX.utils.sheet_to_json(worksheet, { defval: "" });
+
+                    if (jsonData.length === 0) {
+                        showToast("File Excel kosong!", "error");
+                        return;
+                    }
 
                     let addedCount = 0;
-                    json.forEach(row => {
-                        const nisn = String(row.NISN || row.nisn || '').trim();
-                        const nama = String(row.Nama || row.nama || '').trim().toUpperCase();
-                        const kelas = String(row.Kelas || row.kelas || '').trim().toUpperCase();
-                        const wa_ortu = String(row.WA_OrangTua || row.wa_ortu || row.WA || '').trim();
+                    let updatedCount = 0;
 
-                        if (nisn && nama && kelas) {
-                            const index = studentsData.findIndex(s => s.nisn === nisn);
-                            if (index !== -1) {
-                                studentsData[index].nama = nama;
-                                studentsData[index].kelas = kelas;
-                                studentsData[index].wa_ortu = wa_ortu;
+                    jsonData.forEach(row => {
+                        const nisn = String(row["NISN"] || row["nisn"] || "").trim();
+                        const nama = String(row["Nama Siswa"] || row["Nama"] || row["nama"] || "").trim().toUpperCase();
+                        const kelas = String(row["Kelas"] || row["kelas"] || "").trim().toUpperCase();
+                        const wa = String(row["No WA Ortu"] || row["WhatsApp"] || row["wa"] || "").trim();
+
+                        if (nisn && nama) {
+                            const existingIdx = studentsData.findIndex(s => s.nisn === nisn);
+                            if (existingIdx !== -1) {
+                                studentsData[existingIdx].nama = nama;
+                                studentsData[existingIdx].kelas = kelas || studentsData[existingIdx].kelas;
+                                studentsData[existingIdx].wa_ortu = wa || studentsData[existingIdx].wa_ortu;
+                                updatedCount++;
                             } else {
-                                studentsData.push({ nisn, nama, kelas, wa_ortu, photo: "" });
+                                studentsData.push({
+                                    nisn: nisn,
+                                    nama: nama,
+                                    kelas: kelas || "7A",
+                                    wa_ortu: wa,
+                                    photo: ""
+                                });
+                                addedCount++;
                             }
-                            addedCount++;
                         }
                     });
 
                     saveStudentsToStorage();
-                    showToast(`Berhasil mengimpor ${addedCount} data siswa!`, "success");
-                    event.target.value = '';
+                    showToast(`Import Excel Sukses! +${addedCount} Baru, ${updatedCount} Diperbarui.`, "success");
                 } catch (err) {
-                    showToast("Format Excel tidak valid: " + err.message, "error");
+                    showToast("Gagal membaca file Excel!", "error");
                 }
+                event.target.value = "";
             };
             reader.readAsArrayBuffer(file);
         }
@@ -1688,26 +1771,27 @@
                 showToast("Tidak ada data siswa untuk di-export!", "error");
                 return;
             }
-            const exportData = studentsData.map(s => ({
-                NISN: s.nisn,
-                Nama: s.nama,
-                Kelas: s.kelas,
-                WA_OrangTua: s.wa_ortu || '-'
+            const exportData = studentsData.map((s, i) => ({
+                "No": i + 1,
+                "NISN": s.nisn,
+                "Nama Siswa": s.nama,
+                "Kelas": s.kelas,
+                "No WA Ortu": s.wa_ortu || "-"
             }));
+
             const ws = XLSX.utils.json_to_sheet(exportData);
             const wb = XLSX.utils.book_new();
-            XLSX.utils.book_append_sheet(wb, ws, "Data_Siswa");
-            XLSX.writeFile(wb, "Data_Induk_Siswa_SMPN6.xlsx");
+            XLSX.utils.book_append_sheet(wb, ws, "Data Siswa");
+            XLSX.writeFile(wb, `Data_Induk_Siswa_SMPN6_${getFormattedDateWIT()}.xlsx`);
         }
 
-        // RECORD TAB FILTERS & RENDER
+        // RECORD FILTERS & TABLE RENDER
         function setRecordFilter(filterType) {
-            activeRecordFilter = filterType;
             window.activeRecordFilter = filterType;
-            ['semua', 'today', 'weekly', 'monthly'].forEach(f => {
-                const btn = document.getElementById(`filter-rec-${f}`);
+            ['semua', 'today', 'weekly', 'monthly'].forEach(ft => {
+                const btn = document.getElementById(`filter-rec-${ft}`);
                 if (btn) {
-                    if (f === filterType) {
+                    if (ft === filterType) {
                         btn.className = "px-4 py-2 btn-glow-toska rounded-xl text-xs font-bold";
                     } else {
                         btn.className = "px-4 py-2 btn-glow-outline rounded-xl text-xs font-bold";
@@ -1721,50 +1805,46 @@
             const tbody = document.getElementById('record-table-body');
             const search = (document.getElementById('record-search-input')?.value || '').toLowerCase();
             const classFilter = document.getElementById('record-class-filter')?.value || 'semua';
-            const selectedMonth = document.getElementById('record-month-picker')?.value || '';
+            const selectedMonth = document.getElementById('record-month-picker')?.value; // YYYY-MM
 
+            const filterType = window.activeRecordFilter || 'semua';
             const todayStr = getFormattedDateWIT();
 
-            let filtered = attendanceLogs.filter(l => {
+            let logs = [...attendanceLogs];
+
+            if (filterType === 'today') {
+                logs = logs.filter(l => l.tanggal === todayStr);
+            } else if (filterType === 'weekly') {
+                const sevenDaysAgo = Date.now() - (7 * 24 * 60 * 60 * 1000);
+                logs = logs.filter(l => (l.timestamp || 0) >= sevenDaysAgo);
+            } else if (filterType === 'monthly') {
+                if (selectedMonth) {
+                    logs = logs.filter(l => l.tanggal.startsWith(selectedMonth));
+                }
+            }
+
+            let filtered = logs.filter(l => {
                 const matchQuery = l.nama.toLowerCase().includes(search) || l.nisn.toLowerCase().includes(search);
                 const matchClass = classFilter === 'semua' || l.kelas === classFilter;
-                
-                let matchDate = true;
-                if (activeRecordFilter === 'today') {
-                    matchDate = l.tanggal === todayStr;
-                } else if (activeRecordFilter === 'weekly') {
-                    const logDate = new Date(l.tanggal);
-                    const now = new Date();
-                    const diffDays = (now - logDate) / (1000 * 60 * 60 * 24);
-                    matchDate = diffDays >= 0 && diffDays <= 7;
-                } else if (activeRecordFilter === 'monthly') {
-                    if (selectedMonth) {
-                        matchDate = l.tanggal.startsWith(selectedMonth);
-                    }
-                }
-
-                return matchQuery && matchClass && matchDate;
+                return matchQuery && matchClass;
             });
-
-            // Sort by Date desc then Class then Name
-            filtered.sort((a,b) => b.timestamp - a.timestamp || a.kelas.localeCompare(b.kelas) || a.nama.localeCompare(b.nama));
 
             document.getElementById('stat-total-records').innerText = filtered.length;
             document.getElementById('stat-total-hadir').innerText = filtered.filter(l => l.status.toLowerCase().includes('hadir')).length;
             document.getElementById('stat-total-terlambat').innerText = filtered.filter(l => l.status.toLowerCase().includes('terlambat')).length;
 
             if (filtered.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="7" class="text-center py-8 text-slate-400">Tidak ada data rekapan yang sesuai filter.</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="7" class="text-center py-8 text-slate-400 font-medium">Log absensi tidak ditemukan.</td></tr>`;
                 return;
             }
 
             tbody.innerHTML = filtered.map((l, i) => `
                 <tr class="hover:bg-slate-50 transition">
                     <td class="px-4 py-3 text-center font-bold text-slate-500">${i + 1}</td>
-                    <td class="px-4 py-3 font-medium text-slate-800">${l.tanggal}</td>
-                    <td class="px-4 py-3 font-mono font-bold text-slate-800">${l.jam} WIT</td>
+                    <td class="px-4 py-3 font-mono text-slate-800 font-medium">${l.tanggal}</td>
+                    <td class="px-4 py-3 font-mono font-bold text-slate-900">${l.jam}</td>
                     <td class="px-4 py-3 font-mono font-bold text-cyan-700">${l.nisn}</td>
-                    <td class="px-4 py-3 font-extrabold text-slate-900">${l.nama}</td>
+                    <td class="px-4 py-3 font-black text-slate-900">${l.nama}</td>
                     <td class="px-4 py-3 text-center"><span class="bg-cyan-100 text-cyan-900 px-2.5 py-1 rounded-lg font-bold border border-cyan-300">${l.kelas}</span></td>
                     <td class="px-4 py-3 text-center">
                         ${l.status.toLowerCase().includes('hadir')
@@ -1776,136 +1856,130 @@
             `).join('');
         }
 
-        function confirmClearHistory() {
-            if (confirm("Apakah Anda yakin ingin MENGHAPUS SELURUH RIWAYAT LOG ABSENSI?")) {
-                attendanceLogs = [];
-                saveAttendanceToStorage();
-                showToast("Log absensi berhasil dibersihkan.", "info");
-            }
-        }
-
-        // ADVANCED EXCEL REKAPAN (PERBULAN & PERMINGGU TERSUSUN PER KELAS & PERSENTASE)
+        // ADVANCED MONTHLY MATRIX EXCEL EXPORT (1-31 DAYS BY CLASS & ATTENDANCE PERCENTAGE)
         function exportMonthlyMatrixExcel() {
-            const selectedMonth = document.getElementById('record-month-picker')?.value || getFormattedDateWIT().substring(0, 7);
-            const [year, month] = selectedMonth.split('-');
-            const totalDaysInMonth = new Date(year, month, 0).getDate();
+            const selectedMonth = document.getElementById('record-month-picker')?.value || getFormattedDateWIT().substring(0,7);
+            const [year, month] = selectedMonth.split('-').map(Number);
+            const daysInMonth = new Date(year, month, 0).getDate();
 
-            // Group students by Class
+            // Group active students by class
             const sortedStudents = [...studentsData].sort((a,b) => a.kelas.localeCompare(b.kelas) || a.nama.localeCompare(b.nama));
             
             if (sortedStudents.length === 0) {
-                showToast("Data siswa kosong untuk dibuat rekapan bulanan!", "error");
+                showToast("Data siswa kosong untuk export bulanan!", "error");
                 return;
             }
 
-            const rows = [];
-            let currentClass = "";
+            const matrixRows = [];
 
-            sortedStudents.forEach((st, idx) => {
-                // Header row for class separation
-                if (st.kelas !== currentClass) {
-                    currentClass = st.kelas;
-                    rows.push({ NISN: `=== KELAS ${currentClass} ===`, Nama: "", Kelas: "" });
-                }
-
-                const studentRow = {
-                    No: idx + 1,
-                    NISN: st.nisn,
-                    Nama: st.nama,
-                    Kelas: st.kelas
+            sortedStudents.forEach((student, index) => {
+                const row = {
+                    "No": index + 1,
+                    "NISN": student.nisn,
+                    "Nama Siswa": student.nama,
+                    "Kelas": student.kelas
                 };
 
-                let totalHadir = 0;
-                let totalTerlambat = 0;
+                let countHadir = 0;
+                let countTerlambat = 0;
 
-                for (let day = 1; day <= totalDaysInMonth; day++) {
-                    const dayStr = String(day).padStart(2, '0');
-                    const dateKey = `${selectedMonth}-${dayStr}`;
+                for (let d = 1; d <= daysInMonth; d++) {
+                    const dayStr = String(d).padStart(2, '0');
+                    const fullDate = `${selectedMonth}-${dayStr}`;
+
+                    const dayLog = attendanceLogs.find(l => l.nisn === student.nisn && l.tanggal === fullDate);
                     
-                    const log = attendanceLogs.find(l => l.nisn === st.nisn && l.tanggal === dateKey);
-                    if (log) {
-                        if (log.status.toLowerCase().includes('hadir')) {
-                            studentRow[`H-${day}`] = "H";
-                            totalHadir++;
+                    if (dayLog) {
+                        if (dayLog.status.toLowerCase().includes('hadir')) {
+                            row[`Tgl ${d}`] = "H";
+                            countHadir++;
                         } else {
-                            studentRow[`H-${day}`] = "T";
-                            totalTerlambat++;
+                            row[`Tgl ${d}`] = "T";
+                            countTerlambat++;
                         }
                     } else {
-                        studentRow[`H-${day}`] = "-";
+                        row[`Tgl ${d}`] = "-";
                     }
                 }
 
-                const totalInvolved = totalHadir + totalTerlambat;
-                const percentage = totalInvolved > 0 ? Math.round((totalHadir / totalInvolved) * 100) + "%" : "0%";
+                const totalHadirDanTerlambat = countHadir + countTerlambat;
+                const percentage = daysInMonth > 0 ? ((totalHadirDanTerlambat / daysInMonth) * 100).toFixed(1) + "%" : "0%";
 
-                studentRow["Total Hadir"] = totalHadir;
-                studentRow["Total Terlambat"] = totalTerlambat;
-                studentRow["Persentase Kehadiran (%)"] = percentage;
+                row["Total Hadir (H)"] = countHadir;
+                row["Total Terlambat (T)"] = countTerlambat;
+                row["Persentase Kehadiran"] = percentage;
 
-                rows.push(studentRow);
+                matrixRows.push(row);
             });
 
-            const ws = XLSX.utils.json_to_sheet(rows);
+            const ws = XLSX.utils.json_to_sheet(matrixRows);
             const wb = XLSX.utils.book_new();
-            XLSX.utils.book_append_sheet(wb, ws, `Bulan_${selectedMonth}`);
-            XLSX.writeFile(wb, `Rekapan_Bulanan_Matriks_${selectedMonth}_SMPN6.xlsx`);
-            showToast(`Export Excel Bulanan (${selectedMonth}) Berhasil!`, "success");
+            XLSX.utils.book_append_sheet(wb, ws, `Matriks_${selectedMonth}`);
+            XLSX.writeFile(wb, `Laporan_Matriks_Absensi_Bulan_${selectedMonth}_SMPN6.xlsx`);
+            showToast("Export Rekapan Bulanan Matriks Berhasil!", "success");
         }
 
         function exportWeeklyExcel() {
-            // Last 7 days logs grouped by class
-            const now = new Date();
-            const weeklyLogs = attendanceLogs.filter(l => {
-                const logDate = new Date(l.tanggal);
-                const diffDays = (now - logDate) / (1000 * 60 * 60 * 24);
-                return diffDays >= 0 && diffDays <= 7;
-            });
+            const sevenDaysAgo = Date.now() - (7 * 24 * 60 * 60 * 1000);
+            const weeklyLogs = attendanceLogs.filter(l => (l.timestamp || 0) >= sevenDaysAgo);
 
-            weeklyLogs.sort((a,b) => a.kelas.localeCompare(b.kelas) || a.nama.localeCompare(b.nama) || b.timestamp - a.timestamp);
-
-            const exportData = weeklyLogs.map((l, i) => ({
-                No: i + 1,
-                Kelas: l.kelas,
-                NISN: l.nisn,
-                Nama: l.nama,
-                Tanggal: l.tanggal,
-                Jam_WIT: l.jam,
-                Status: l.status
-            }));
-
-            const ws = XLSX.utils.json_to_sheet(exportData);
-            const wb = XLSX.utils.book_new();
-            XLSX.utils.book_append_sheet(wb, ws, "Rekapan_Mingguan");
-            XLSX.writeFile(wb, `Rekapan_Mingguan_Lengkap_SMPN6.xlsx`);
-            showToast("Export Excel Mingguan Berhasil!", "success");
-        }
-
-        function exportAttendanceToExcel(mode) {
-            let logsToExport = [...attendanceLogs];
-            const todayStr = getFormattedDateWIT();
-
-            if (mode === 'today') {
-                logsToExport = logsToExport.filter(l => l.tanggal === todayStr);
+            if (weeklyLogs.length === 0) {
+                showToast("Tidak ada data presensi minggu ini!", "error");
+                return;
             }
 
-            logsToExport.sort((a,b) => a.kelas.localeCompare(b.kelas) || a.nama.localeCompare(b.nama));
-
-            const exportData = logsToExport.map((l, i) => ({
-                No: i + 1,
-                Tanggal: l.tanggal,
-                Jam_WIT: l.jam,
-                NISN: l.nisn,
-                Nama: l.nama,
-                Kelas: l.kelas,
-                Status: l.status
+            const data = weeklyLogs.map((l, i) => ({
+                "No": i + 1,
+                "Tanggal": l.tanggal,
+                "Jam Scan (WIT)": l.jam,
+                "NISN": l.nisn,
+                "Nama Siswa": l.nama,
+                "Kelas": l.kelas,
+                "Status Kehadiran": l.status
             }));
 
-            const ws = XLSX.utils.json_to_sheet(exportData);
+            const ws = XLSX.utils.json_to_sheet(data);
             const wb = XLSX.utils.book_new();
-            XLSX.utils.book_append_sheet(wb, ws, "Rekapan_Absens");
-            XLSX.writeFile(wb, `Rekapan_Absensi_SMPN6_${mode}.xlsx`);
-            showToast("Export Excel Log Berhasil!", "success");
+            XLSX.utils.book_append_sheet(wb, ws, "Minggu Ini");
+            XLSX.writeFile(wb, `Rekap_Absen_Mingguan_SMPN6_${getFormattedDateWIT()}.xlsx`);
+            showToast("Export Rekapan Mingguan Berhasil!", "success");
+        }
+
+        function exportAttendanceToExcel(type) {
+            let logs = [...attendanceLogs];
+            if (type === 'today') {
+                const todayStr = getFormattedDateWIT();
+                logs = logs.filter(l => l.tanggal === todayStr);
+            }
+
+            if (logs.length === 0) {
+                showToast("Tidak ada data presensi untuk di-export!", "error");
+                return;
+            }
+
+            const data = logs.map((l, i) => ({
+                "No": i + 1,
+                "Tanggal": l.tanggal,
+                "Waktu (WIT)": l.jam,
+                "NISN": l.nisn,
+                "Nama Siswa": l.nama,
+                "Kelas": l.kelas,
+                "Status": l.status
+            }));
+
+            const ws = XLSX.utils.json_to_sheet(data);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "Log Presensi");
+            XLSX.writeFile(wb, `Laporan_Absensi_SMPN6_${getFormattedDateWIT()}.xlsx`);
+            showToast("Export Excel Log Presensi Berhasil!", "success");
+        }
+
+        function confirmClearHistory() {
+            if (confirm("Apakah Anda yakin ingin membersihkan seluruh riwayat Log Absensi?")) {
+                attendanceLogs = [];
+                saveAttendanceToStorage();
+                showToast("Riwayat log presensi telah dibersihkan.", "warning");
+            }
         }
 
         // WA QUEUE TABLE RENDER
@@ -1914,77 +1988,47 @@
             const badge = document.getElementById('wa-queue-badge');
             const countText = document.getElementById('wa-queue-count-text');
 
-            const pendingList = waQueue.filter(q => q.status === 'Menunggu');
-            if (badge) badge.innerText = pendingList.length;
-            if (countText) countText.innerText = `${pendingList.length} Pesan Dalam Antrean`;
-
-            if (!tbody) return;
+            const pendingCount = waQueue.filter(q => q.status === 'Menunggu').length;
+            if (badge) badge.innerText = pendingCount;
+            if (countText) countText.innerText = `${pendingCount} Pesan Dalam Antrean`;
 
             if (waQueue.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="4" class="text-center py-8 text-slate-400">Antrean pesan kosong. Pesan masuk otomatis saat scan.</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="4" class="text-center py-8 text-slate-400 font-medium">Antrean pesan kosong. Pesan masuk otomatis saat siswa scan.</td></tr>`;
                 return;
             }
 
             tbody.innerHTML = waQueue.slice().reverse().map(q => `
                 <tr class="hover:bg-slate-50 transition">
-                    <td class="px-4 py-3 font-mono text-slate-700 font-bold">${q.timeFormatted || '--:--'}</td>
-                    <td class="px-4 py-3 font-extrabold text-slate-900">${q.nama}</td>
-                    <td class="px-4 py-3 font-mono text-cyan-800 font-bold">${q.wa_ortu}</td>
+                    <td class="px-4 py-3 font-mono font-bold text-slate-800">${q.timeFormatted || '--:--'}</td>
+                    <td class="px-4 py-3 font-black text-slate-900">${q.nama}</td>
+                    <td class="px-4 py-3 font-mono text-slate-700 font-medium">${q.wa_ortu}</td>
                     <td class="px-4 py-3 text-center">
-                        ${q.status === 'Terkirim' 
-                            ? `<span class="bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full text-[10px] font-extrabold border border-emerald-300">Berhasil Terkirim</span>`
-                            : `<span class="bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full text-[10px] font-extrabold border border-amber-300 animate-pulse">Menunggu</span>`
+                        ${q.status === 'Terkirim'
+                            ? `<span class="bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full text-xs font-bold border border-emerald-300"><i class="fa-solid fa-check mr-1"></i>Terkirim</span>`
+                            : isWAResting
+                            ? `<span class="bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full text-xs font-bold border border-amber-300"><i class="fa-solid fa-pause mr-1"></i>Istirahat 5m</span>`
+                            : `<span class="bg-cyan-100 text-cyan-800 px-2.5 py-1 rounded-full text-xs font-bold border border-cyan-300"><i class="fa-solid fa-clock mr-1"></i>Menunggu</span>`
                         }
                     </td>
                 </tr>
             `).join('');
         }
 
-        // AUDIO BEEP SYNTHESIZER FOR SCAN FEEDBACK
-        function playAudioBeep(type) {
-            try {
-                const ctx = new (window.AudioContext || window.webkitAudioContext)();
-                const osc = ctx.createOscillator();
-                const gain = ctx.createGain();
-                osc.connect(gain);
-                gain.connect(ctx.destination);
-
-                if (type === 'success') {
-                    osc.frequency.setValueAtTime(880, ctx.currentTime); // A5
-                    gain.gain.setValueAtTime(0.2, ctx.currentTime);
-                    osc.start();
-                    osc.stop(ctx.currentTime + 0.15);
-                } else if (type === 'late') {
-                    osc.frequency.setValueAtTime(440, ctx.currentTime); // A4
-                    gain.gain.setValueAtTime(0.25, ctx.currentTime);
-                    osc.start();
-                    osc.stop(ctx.currentTime + 0.25);
-                } else if (type === 'warning' || type === 'error') {
-                    osc.type = 'sawtooth';
-                    osc.frequency.setValueAtTime(220, ctx.currentTime);
-                    gain.gain.setValueAtTime(0.3, ctx.currentTime);
-                    osc.start();
-                    osc.stop(ctx.currentTime + 0.35);
-                }
-            } catch (e) {}
-        }
-
         // TOAST NOTIFICATIONS
-        function showToast(message, type = 'info') {
+        function showToast(message, type = "info") {
             const toast = document.getElementById('toast');
-            const toastMsg = document.getElementById('toast-message');
-            const toastIcon = document.getElementById('toast-icon');
+            const icon = document.getElementById('toast-icon');
+            const msg = document.getElementById('toast-message');
 
-            toastMsg.innerText = message;
-
+            msg.innerText = message;
             if (type === 'success') {
-                toastIcon.className = "fa-solid fa-circle-check text-cyan-400 text-lg";
-            } else if (type === 'warning') {
-                toastIcon.className = "fa-solid fa-triangle-exclamation text-amber-400 text-lg";
+                icon.className = "fa-solid fa-circle-check text-emerald-400 text-lg";
             } else if (type === 'error') {
-                toastIcon.className = "fa-solid fa-circle-xmark text-rose-400 text-lg";
+                icon.className = "fa-solid fa-circle-xmark text-rose-400 text-lg";
+            } else if (type === 'warning') {
+                icon.className = "fa-solid fa-triangle-exclamation text-amber-400 text-lg";
             } else {
-                toastIcon.className = "fa-solid fa-circle-info text-cyan-300 text-lg";
+                icon.className = "fa-solid fa-circle-info text-cyan-400 text-lg";
             }
 
             toast.classList.add('show');
